@@ -1,0 +1,164 @@
+syntax = "proto3";
+
+option go_package = "./snap-service";
+
+package snap;
+
+// Not every snap service is implemented in this proto file, some are served via http 1.1 request
+service SnapService {
+    rpc AddVirtualAccount(AddVirtualAccountRequest) returns (AddVirtualAccountResponse);
+    rpc BalanceInquiry(Empty) returns (BalanceInquiryResponse);
+    rpc BankStatement(BankStatementRequest) returns (BankStatementResponse);
+    rpc TransferIntraBank(TransferIntraBankRequest) returns (BankTransferResponse);
+    rpc TransferInterBank(TransferInterBankRequest) returns (BankTransferResponse);
+    rpc ExternalAccountInquiry(ExternalAccountInquiryRequest) returns (ExternalAccountInquiryResponse);
+    rpc InternalAccountInquiry(InternalAccountInquiryRequest) returns (InternalAccountInquiryResponse);
+    rpc VirtualAccountStatusInquiry(VirtualAccountStatusInquiryRequest) returns (VirtualAccountStatusInquiryResponse);
+    rpc TransferStatusInquiry(Empty) returns (RPCResponse);
+}
+
+message RPCResponse {
+    int32 response = 1;
+    string message = 2;
+}
+message Empty{}
+
+message AddVirtualAccountRequest {
+    int64 idTransaction = 1;
+    string transactionIdentifier = 2;
+    int64 idBank = 3;
+    string customerNo = 4;
+    string accountName = 5;
+    string totalAmount = 6;
+    string feeAmount = 7;
+    string expireDate = 8;
+}
+message AddVirtualAccountResponse {
+    RPCResponse response = 1;
+    string vaNum = 2;
+    string expireDate = 3;
+}
+
+message BalanceInquiryResponse {
+    RPCResponse response = 1;
+    string accountNumber = 2;
+    string accountName = 3;
+    BalanceAmount balance = 4;
+    BalanceDetails balanceDetails = 5;
+    string jsonStr = 6; // JSON representation of the response
+}
+
+message BankStatementRequest {
+    string fromDateTime = 1;
+    string toDateTime = 2;
+}
+message BankStatementResponse {
+    RPCResponse response = 1;
+    BankStatementBalance balance = 2;
+    BankTransactionEntry creditEntries = 3;
+    BankTransactionEntry debitEntries = 4;
+    repeated BankStatementDetail statements = 5;
+    string jsonStr = 6; // JSON representation of the response
+}
+
+message TransferIntraBankRequest {
+    BalanceAmount amount = 1;
+    string beneficiaryAccountNo = 2;
+    string beneficiaryEmail = 3;
+    string transactionDate = 4;
+}
+message TransferInterBankRequest {
+    BalanceAmount amount = 1;
+    string beneficiaryAccountNo = 2;
+    string beneficiaryAccountName = 3;
+    string beneficiaryBankCode = 4;
+    string beneficiaryEmail = 5;
+    string transactionDate = 6;
+}
+message BankTransferResponse { // Used for Inter and Intra Bank Transfer
+    RPCResponse response = 1;
+    string transactionReferenceStr = 2;
+    string externalId = 3;
+    string serviceCode = 4;
+    string transactionDate = 5;
+    string jsonStr = 6; // JSON representation of the response
+}
+
+message ExternalAccountInquiryRequest {
+    string beneficiaryBankCode = 1;
+    string beneficiaryAccountNo = 2;
+    string inquiryService = 3;
+    string purposeCode = 4;
+    BalanceAmount amount = 5;
+}
+message ExternalAccountInquiryResponse {
+    RPCResponse response = 1;
+    string beneficiaryAccountName = 2;
+    string beneficiaryAccountNo = 3;
+    string beneficiaryBankCode = 4;
+    string jsonStr = 5;
+}
+
+message InternalAccountInquiryRequest {
+    string beneficiaryAccountNo = 1;
+}
+message InternalAccountInquiryResponse {
+    RPCResponse response = 1;
+    string beneficiaryAccountName = 2;
+    string beneficiaryAccountNo = 3;
+    string jsonStr = 4; // JSON representation of the response
+}
+
+message VirtualAccountStatusInquiryRequest {
+    string vaNum = 1;
+}
+message VirtualAccountStatusInquiryResponse {
+    RPCResponse response = 1;
+    string vaNum = 2;
+    string vaStatus = 3;
+    string expireDate = 4;
+    string paidDate = 5;
+    string jsonStr = 6; // JSON representation of the response
+}
+
+// Model Definitions
+
+message BalanceAmount {
+    string value = 1;
+    string currency = 2;
+    HintText hintText = 3;
+}
+
+message HintText {
+    string en = 1;
+    string id = 2;
+}
+
+message BalanceDetails {
+    BalanceAmount availableBalance = 1;
+    BalanceAmount floatBalance = 2;
+    BalanceAmount holdBalance = 3;
+}
+
+message BankStatementBalanceDetail {
+    BalanceAmount balanceDetails = 1;
+    string dateTime = 2;
+}
+
+message BankStatementBalance {
+    BankStatementBalanceDetail amount = 1;
+    BankStatementBalanceDetail startingBalance = 2;
+    BankStatementBalanceDetail endingBalance = 3;
+}
+
+message BankTransactionEntry {
+    string numOfEntries = 1;
+    BalanceAmount amount = 2;
+}
+
+message BankStatementDetail {
+    BalanceAmount amount = 1;
+    string transactionType = 2;
+    string transactionRemark = 3;
+    string transactionDate = 4;
+}
