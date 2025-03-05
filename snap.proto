@@ -85,6 +85,8 @@ message BankTransferResponse { // Used for Inter and Intra Bank Transfer
     string serviceCode = 4;
     string transactionDate = 5;
     string jsonStr = 6; // JSON representation of the response
+    string transactionStatusCode = 7;
+    string transactionStatusDesc = 8;
 }
 
 message ExternalAccountInquiryRequest {

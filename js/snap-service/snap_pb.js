@@ -2905,7 +2905,9 @@ proto.snap.BankTransferResponse.toObject = function(includeInstance, msg) {
     externalid: jspb.Message.getFieldWithDefault(msg, 3, ""),
     servicecode: jspb.Message.getFieldWithDefault(msg, 4, ""),
     transactiondate: jspb.Message.getFieldWithDefault(msg, 5, ""),
-    jsonstr: jspb.Message.getFieldWithDefault(msg, 6, "")
+    jsonstr: jspb.Message.getFieldWithDefault(msg, 6, ""),
+    transactionstatuscode: jspb.Message.getFieldWithDefault(msg, 7, ""),
+    transactionstatusdesc: jspb.Message.getFieldWithDefault(msg, 8, "")
   };
 
   if (includeInstance) {
@@ -2966,6 +2968,14 @@ proto.snap.BankTransferResponse.deserializeBinaryFromReader = function(msg, read
     case 6:
       var value = /** @type {string} */ (reader.readString());
       msg.setJsonstr(value);
+      break;
+    case 7:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setTransactionstatuscode(value);
+      break;
+    case 8:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setTransactionstatusdesc(value);
       break;
     default:
       reader.skipField();
@@ -3036,6 +3046,20 @@ proto.snap.BankTransferResponse.serializeBinaryToWriter = function(message, writ
   if (f.length > 0) {
     writer.writeString(
       6,
+      f
+    );
+  }
+  f = message.getTransactionstatuscode();
+  if (f.length > 0) {
+    writer.writeString(
+      7,
+      f
+    );
+  }
+  f = message.getTransactionstatusdesc();
+  if (f.length > 0) {
+    writer.writeString(
+      8,
       f
     );
   }
@@ -3166,6 +3190,42 @@ proto.snap.BankTransferResponse.prototype.getJsonstr = function() {
  */
 proto.snap.BankTransferResponse.prototype.setJsonstr = function(value) {
   return jspb.Message.setProto3StringField(this, 6, value);
+};
+
+
+/**
+ * optional string transactionStatusCode = 7;
+ * @return {string}
+ */
+proto.snap.BankTransferResponse.prototype.getTransactionstatuscode = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 7, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.snap.BankTransferResponse} returns this
+ */
+proto.snap.BankTransferResponse.prototype.setTransactionstatuscode = function(value) {
+  return jspb.Message.setProto3StringField(this, 7, value);
+};
+
+
+/**
+ * optional string transactionStatusDesc = 8;
+ * @return {string}
+ */
+proto.snap.BankTransferResponse.prototype.getTransactionstatusdesc = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 8, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.snap.BankTransferResponse} returns this
+ */
+proto.snap.BankTransferResponse.prototype.setTransactionstatusdesc = function(value) {
+  return jspb.Message.setProto3StringField(this, 8, value);
 };
 
 
