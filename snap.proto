@@ -66,6 +66,8 @@ message TransferIntraBankRequest {
     string beneficiaryAccountNo = 2;
     string beneficiaryEmail = 3;
     string transactionDate = 4;
+    string beneficiaryAccountName = 5;
+    string transactionRemark = 6;
 }
 message TransferInterBankRequest {
     BalanceAmount amount = 1;
@@ -74,6 +76,7 @@ message TransferInterBankRequest {
     string beneficiaryBankCode = 4;
     string beneficiaryEmail = 5;
     string transactionDate = 6;
+    string transactionRemark = 7;
 }
 message BankTransferResponse { // Used for Inter and Intra Bank Transfer
     RPCResponse response = 1;

@@ -2271,7 +2271,9 @@ proto.snap.TransferIntraBankRequest.toObject = function(includeInstance, msg) {
     amount: (f = msg.getAmount()) && proto.snap.BalanceAmount.toObject(includeInstance, f),
     beneficiaryaccountno: jspb.Message.getFieldWithDefault(msg, 2, ""),
     beneficiaryemail: jspb.Message.getFieldWithDefault(msg, 3, ""),
-    transactiondate: jspb.Message.getFieldWithDefault(msg, 4, "")
+    transactiondate: jspb.Message.getFieldWithDefault(msg, 4, ""),
+    beneficiaryaccountname: jspb.Message.getFieldWithDefault(msg, 5, ""),
+    transactionremark: jspb.Message.getFieldWithDefault(msg, 6, "")
   };
 
   if (includeInstance) {
@@ -2324,6 +2326,14 @@ proto.snap.TransferIntraBankRequest.deserializeBinaryFromReader = function(msg, 
     case 4:
       var value = /** @type {string} */ (reader.readString());
       msg.setTransactiondate(value);
+      break;
+    case 5:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setBeneficiaryaccountname(value);
+      break;
+    case 6:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setTransactionremark(value);
       break;
     default:
       reader.skipField();
@@ -2380,6 +2390,20 @@ proto.snap.TransferIntraBankRequest.serializeBinaryToWriter = function(message, 
   if (f.length > 0) {
     writer.writeString(
       4,
+      f
+    );
+  }
+  f = message.getBeneficiaryaccountname();
+  if (f.length > 0) {
+    writer.writeString(
+      5,
+      f
+    );
+  }
+  f = message.getTransactionremark();
+  if (f.length > 0) {
+    writer.writeString(
+      6,
       f
     );
   }
@@ -2477,6 +2501,42 @@ proto.snap.TransferIntraBankRequest.prototype.setTransactiondate = function(valu
 };
 
 
+/**
+ * optional string beneficiaryAccountName = 5;
+ * @return {string}
+ */
+proto.snap.TransferIntraBankRequest.prototype.getBeneficiaryaccountname = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 5, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.snap.TransferIntraBankRequest} returns this
+ */
+proto.snap.TransferIntraBankRequest.prototype.setBeneficiaryaccountname = function(value) {
+  return jspb.Message.setProto3StringField(this, 5, value);
+};
+
+
+/**
+ * optional string transactionRemark = 6;
+ * @return {string}
+ */
+proto.snap.TransferIntraBankRequest.prototype.getTransactionremark = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 6, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.snap.TransferIntraBankRequest} returns this
+ */
+proto.snap.TransferIntraBankRequest.prototype.setTransactionremark = function(value) {
+  return jspb.Message.setProto3StringField(this, 6, value);
+};
+
+
 
 
 
@@ -2514,7 +2574,8 @@ proto.snap.TransferInterBankRequest.toObject = function(includeInstance, msg) {
     beneficiaryaccountname: jspb.Message.getFieldWithDefault(msg, 3, ""),
     beneficiarybankcode: jspb.Message.getFieldWithDefault(msg, 4, ""),
     beneficiaryemail: jspb.Message.getFieldWithDefault(msg, 5, ""),
-    transactiondate: jspb.Message.getFieldWithDefault(msg, 6, "")
+    transactiondate: jspb.Message.getFieldWithDefault(msg, 6, ""),
+    transactionremark: jspb.Message.getFieldWithDefault(msg, 7, "")
   };
 
   if (includeInstance) {
@@ -2575,6 +2636,10 @@ proto.snap.TransferInterBankRequest.deserializeBinaryFromReader = function(msg, 
     case 6:
       var value = /** @type {string} */ (reader.readString());
       msg.setTransactiondate(value);
+      break;
+    case 7:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setTransactionremark(value);
       break;
     default:
       reader.skipField();
@@ -2645,6 +2710,13 @@ proto.snap.TransferInterBankRequest.serializeBinaryToWriter = function(message, 
   if (f.length > 0) {
     writer.writeString(
       6,
+      f
+    );
+  }
+  f = message.getTransactionremark();
+  if (f.length > 0) {
+    writer.writeString(
+      7,
       f
     );
   }
@@ -2775,6 +2847,24 @@ proto.snap.TransferInterBankRequest.prototype.getTransactiondate = function() {
  */
 proto.snap.TransferInterBankRequest.prototype.setTransactiondate = function(value) {
   return jspb.Message.setProto3StringField(this, 6, value);
+};
+
+
+/**
+ * optional string transactionRemark = 7;
+ * @return {string}
+ */
+proto.snap.TransferInterBankRequest.prototype.getTransactionremark = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 7, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.snap.TransferInterBankRequest} returns this
+ */
+proto.snap.TransferInterBankRequest.prototype.setTransactionremark = function(value) {
+  return jspb.Message.setProto3StringField(this, 7, value);
 };
 
 
