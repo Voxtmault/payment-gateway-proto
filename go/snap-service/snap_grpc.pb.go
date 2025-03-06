@@ -30,7 +30,7 @@ type SnapServiceClient interface {
 	ExternalAccountInquiry(ctx context.Context, in *ExternalAccountInquiryRequest, opts ...grpc.CallOption) (*ExternalAccountInquiryResponse, error)
 	InternalAccountInquiry(ctx context.Context, in *InternalAccountInquiryRequest, opts ...grpc.CallOption) (*InternalAccountInquiryResponse, error)
 	VirtualAccountStatusInquiry(ctx context.Context, in *VirtualAccountStatusInquiryRequest, opts ...grpc.CallOption) (*VirtualAccountStatusInquiryResponse, error)
-	TransferStatusInquiry(ctx context.Context, in *Empty, opts ...grpc.CallOption) (*RPCResponse, error)
+	TransferStatusInquiry(ctx context.Context, in *TransferStatusInquiryRequest, opts ...grpc.CallOption) (*TransferStatusInquiryResponse, error)
 }
 
 type snapServiceClient struct {
@@ -113,8 +113,8 @@ func (c *snapServiceClient) VirtualAccountStatusInquiry(ctx context.Context, in 
 	return out, nil
 }
 
-func (c *snapServiceClient) TransferStatusInquiry(ctx context.Context, in *Empty, opts ...grpc.CallOption) (*RPCResponse, error) {
-	out := new(RPCResponse)
+func (c *snapServiceClient) TransferStatusInquiry(ctx context.Context, in *TransferStatusInquiryRequest, opts ...grpc.CallOption) (*TransferStatusInquiryResponse, error) {
+	out := new(TransferStatusInquiryResponse)
 	err := c.cc.Invoke(ctx, "/snap.SnapService/TransferStatusInquiry", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -134,7 +134,7 @@ type SnapServiceServer interface {
 	ExternalAccountInquiry(context.Context, *ExternalAccountInquiryRequest) (*ExternalAccountInquiryResponse, error)
 	InternalAccountInquiry(context.Context, *InternalAccountInquiryRequest) (*InternalAccountInquiryResponse, error)
 	VirtualAccountStatusInquiry(context.Context, *VirtualAccountStatusInquiryRequest) (*VirtualAccountStatusInquiryResponse, error)
-	TransferStatusInquiry(context.Context, *Empty) (*RPCResponse, error)
+	TransferStatusInquiry(context.Context, *TransferStatusInquiryRequest) (*TransferStatusInquiryResponse, error)
 	mustEmbedUnimplementedSnapServiceServer()
 }
 
@@ -166,7 +166,7 @@ func (UnimplementedSnapServiceServer) InternalAccountInquiry(context.Context, *I
 func (UnimplementedSnapServiceServer) VirtualAccountStatusInquiry(context.Context, *VirtualAccountStatusInquiryRequest) (*VirtualAccountStatusInquiryResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method VirtualAccountStatusInquiry not implemented")
 }
-func (UnimplementedSnapServiceServer) TransferStatusInquiry(context.Context, *Empty) (*RPCResponse, error) {
+func (UnimplementedSnapServiceServer) TransferStatusInquiry(context.Context, *TransferStatusInquiryRequest) (*TransferStatusInquiryResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method TransferStatusInquiry not implemented")
 }
 func (UnimplementedSnapServiceServer) mustEmbedUnimplementedSnapServiceServer() {}
@@ -327,7 +327,7 @@ func _SnapService_VirtualAccountStatusInquiry_Handler(srv interface{}, ctx conte
 }
 
 func _SnapService_TransferStatusInquiry_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(Empty)
+	in := new(TransferStatusInquiryRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -339,7 +339,7 @@ func _SnapService_TransferStatusInquiry_Handler(srv interface{}, ctx context.Con
 		FullMethod: "/snap.SnapService/TransferStatusInquiry",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(SnapServiceServer).TransferStatusInquiry(ctx, req.(*Empty))
+		return srv.(SnapServiceServer).TransferStatusInquiry(ctx, req.(*TransferStatusInquiryRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }

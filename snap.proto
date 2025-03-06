@@ -14,7 +14,7 @@ service SnapService {
     rpc ExternalAccountInquiry(ExternalAccountInquiryRequest) returns (ExternalAccountInquiryResponse);
     rpc InternalAccountInquiry(InternalAccountInquiryRequest) returns (InternalAccountInquiryResponse);
     rpc VirtualAccountStatusInquiry(VirtualAccountStatusInquiryRequest) returns (VirtualAccountStatusInquiryResponse);
-    rpc TransferStatusInquiry(Empty) returns (RPCResponse);
+    rpc TransferStatusInquiry(TransferStatusInquiryRequest) returns (TransferStatusInquiryResponse);
 }
 
 message RPCResponse {
@@ -124,6 +124,24 @@ message VirtualAccountStatusInquiryResponse {
     string expireDate = 4;
     string paidDate = 5;
     string jsonStr = 6; // JSON representation of the response
+}
+
+message TransferStatusInquiryRequest {
+    string transactionReferenceNo = 1;
+}
+message TransferStatusInquiryResponse {
+    RPCResponse response = 1;
+    string serviceTransactionReference = 2;
+    string internalTransactionReference = 3;
+    string externalId = 4;
+    string serviceCode = 5;
+    string transactionDate = 6;
+    BalanceAmount amount = 7;
+    string beneficiaryAccountNo = 8;
+    string beneficiaryBankCode = 9;
+    string transactionStatusCode = 10;
+    string transcationStatusDesc = 11;
+    string jsonStr = 12; // JSON representation of the response
 }
 
 // Model Definitions

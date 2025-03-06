@@ -565,33 +565,33 @@ proto.snap.SnapServicePromiseClient.prototype.virtualAccountStatusInquiry =
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.snap.Empty,
- *   !proto.snap.RPCResponse>}
+ *   !proto.snap.TransferStatusInquiryRequest,
+ *   !proto.snap.TransferStatusInquiryResponse>}
  */
 const methodDescriptor_SnapService_TransferStatusInquiry = new grpc.web.MethodDescriptor(
   '/snap.SnapService/TransferStatusInquiry',
   grpc.web.MethodType.UNARY,
-  proto.snap.Empty,
-  proto.snap.RPCResponse,
+  proto.snap.TransferStatusInquiryRequest,
+  proto.snap.TransferStatusInquiryResponse,
   /**
-   * @param {!proto.snap.Empty} request
+   * @param {!proto.snap.TransferStatusInquiryRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.snap.RPCResponse.deserializeBinary
+  proto.snap.TransferStatusInquiryResponse.deserializeBinary
 );
 
 
 /**
- * @param {!proto.snap.Empty} request The
+ * @param {!proto.snap.TransferStatusInquiryRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.RpcError, ?proto.snap.RPCResponse)}
+ * @param {function(?grpc.web.RpcError, ?proto.snap.TransferStatusInquiryResponse)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.snap.RPCResponse>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.snap.TransferStatusInquiryResponse>|undefined}
  *     The XHR Node Readable Stream
  */
 proto.snap.SnapServiceClient.prototype.transferStatusInquiry =
@@ -606,11 +606,11 @@ proto.snap.SnapServiceClient.prototype.transferStatusInquiry =
 
 
 /**
- * @param {!proto.snap.Empty} request The
+ * @param {!proto.snap.TransferStatusInquiryRequest} request The
  *     request proto
  * @param {?Object<string, string>=} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.snap.RPCResponse>}
+ * @return {!Promise<!proto.snap.TransferStatusInquiryResponse>}
  *     Promise that resolves to the response
  */
 proto.snap.SnapServicePromiseClient.prototype.transferStatusInquiry =
