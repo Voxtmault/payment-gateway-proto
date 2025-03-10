@@ -37,6 +37,10 @@ message AddVirtualAccountResponse {
     RPCResponse response = 1;
     string vaNum = 2;
     string expireDate = 3;
+    string transactionIdentifier = 4;
+    Bank bankInfo = 5;
+    string vaAccountName = 6;
+    string totalAmount = 7;
 }
 
 message BalanceInquiryResponse {
@@ -184,4 +188,15 @@ message BankStatementDetail {
     string transactionType = 2;
     string transactionRemark = 3;
     string transactionDate = 4;
+}
+
+message SnapHelper {
+    int32 id = 1;
+    string name = 2;
+}
+
+message Bank {
+    SnapHelper helper = 1;
+    string picturePath = 2;
+    string swiftCode = 3;
 }
