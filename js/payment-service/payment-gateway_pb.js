@@ -122,7 +122,7 @@ proto.payment.GetVirtualAccountInfoRequest.prototype.toObject = function(opt_inc
 proto.payment.GetVirtualAccountInfoRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
     transactionidentifier: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    idbank: jspb.Message.getFieldWithDefault(msg, 2, "")
+    idbank: jspb.Message.getFieldWithDefault(msg, 2, 0)
   };
 
   if (includeInstance) {
@@ -164,7 +164,7 @@ proto.payment.GetVirtualAccountInfoRequest.deserializeBinaryFromReader = functio
       msg.setTransactionidentifier(value);
       break;
     case 2:
-      var value = /** @type {string} */ (reader.readString());
+      var value = /** @type {number} */ (reader.readInt32());
       msg.setIdbank(value);
       break;
     default:
@@ -204,8 +204,8 @@ proto.payment.GetVirtualAccountInfoRequest.serializeBinaryToWriter = function(me
     );
   }
   f = message.getIdbank();
-  if (f.length > 0) {
-    writer.writeString(
+  if (f !== 0) {
+    writer.writeInt32(
       2,
       f
     );
@@ -232,20 +232,20 @@ proto.payment.GetVirtualAccountInfoRequest.prototype.setTransactionidentifier = 
 
 
 /**
- * optional string idBank = 2;
- * @return {string}
+ * optional int32 idBank = 2;
+ * @return {number}
  */
 proto.payment.GetVirtualAccountInfoRequest.prototype.getIdbank = function() {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 2, ""));
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 2, 0));
 };
 
 
 /**
- * @param {string} value
+ * @param {number} value
  * @return {!proto.payment.GetVirtualAccountInfoRequest} returns this
  */
 proto.payment.GetVirtualAccountInfoRequest.prototype.setIdbank = function(value) {
-  return jspb.Message.setProto3StringField(this, 2, value);
+  return jspb.Message.setProto3IntField(this, 2, value);
 };
 
 

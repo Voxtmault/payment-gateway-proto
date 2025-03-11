@@ -16,7 +16,7 @@ service PaymentGatewayService {
 
 message GetVirtualAccountInfoRequest {
     string transactionIdentifier = 1;
-    string idBank = 2;
+    int32 idBank = 2;
 }
 message GetVirtualAccountInfoResponse {
     RPCResponse response = 1;
