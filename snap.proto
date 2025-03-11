@@ -11,6 +11,7 @@ service SnapService {
     rpc BankStatement(BankStatementRequest) returns (BankStatementResponse);
     rpc TransferIntraBank(TransferIntraBankRequest) returns (BankTransferResponse);
     rpc TransferInterBank(TransferInterBankRequest) returns (BankTransferResponse);
+    rpc BankTransfer(BankTransferRequest) returns (BankTransferResponse);
     rpc ExternalAccountInquiry(ExternalAccountInquiryRequest) returns (ExternalAccountInquiryResponse);
     rpc InternalAccountInquiry(InternalAccountInquiryRequest) returns (InternalAccountInquiryResponse);
     rpc VirtualAccountStatusInquiry(VirtualAccountStatusInquiryRequest) returns (VirtualAccountStatusInquiryResponse);
@@ -65,6 +66,15 @@ message BankStatementResponse {
     string jsonStr = 6; // JSON representation of the response
 }
 
+message BankTransferRequest {
+    BalanceAmount amount = 1;
+    string beneficiaryAccountNo = 2;
+    string beneficiaryAccountName = 3;
+    string beneficiaryBankCode = 4;
+    string beneficiaryEmail = 5;
+    string transactionDate = 6;
+    string transactionRemark = 7;
+}
 message TransferIntraBankRequest {
     BalanceAmount amount = 1;
     string beneficiaryAccountNo = 2;

@@ -27,6 +27,7 @@ type SnapServiceClient interface {
 	BankStatement(ctx context.Context, in *BankStatementRequest, opts ...grpc.CallOption) (*BankStatementResponse, error)
 	TransferIntraBank(ctx context.Context, in *TransferIntraBankRequest, opts ...grpc.CallOption) (*BankTransferResponse, error)
 	TransferInterBank(ctx context.Context, in *TransferInterBankRequest, opts ...grpc.CallOption) (*BankTransferResponse, error)
+	BankTransfer(ctx context.Context, in *BankTransferRequest, opts ...grpc.CallOption) (*BankTransferResponse, error)
 	ExternalAccountInquiry(ctx context.Context, in *ExternalAccountInquiryRequest, opts ...grpc.CallOption) (*ExternalAccountInquiryResponse, error)
 	InternalAccountInquiry(ctx context.Context, in *InternalAccountInquiryRequest, opts ...grpc.CallOption) (*InternalAccountInquiryResponse, error)
 	VirtualAccountStatusInquiry(ctx context.Context, in *VirtualAccountStatusInquiryRequest, opts ...grpc.CallOption) (*VirtualAccountStatusInquiryResponse, error)
@@ -86,6 +87,15 @@ func (c *snapServiceClient) TransferInterBank(ctx context.Context, in *TransferI
 	return out, nil
 }
 
+func (c *snapServiceClient) BankTransfer(ctx context.Context, in *BankTransferRequest, opts ...grpc.CallOption) (*BankTransferResponse, error) {
+	out := new(BankTransferResponse)
+	err := c.cc.Invoke(ctx, "/snap.SnapService/BankTransfer", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 func (c *snapServiceClient) ExternalAccountInquiry(ctx context.Context, in *ExternalAccountInquiryRequest, opts ...grpc.CallOption) (*ExternalAccountInquiryResponse, error) {
 	out := new(ExternalAccountInquiryResponse)
 	err := c.cc.Invoke(ctx, "/snap.SnapService/ExternalAccountInquiry", in, out, opts...)
@@ -131,6 +141,7 @@ type SnapServiceServer interface {
 	BankStatement(context.Context, *BankStatementRequest) (*BankStatementResponse, error)
 	TransferIntraBank(context.Context, *TransferIntraBankRequest) (*BankTransferResponse, error)
 	TransferInterBank(context.Context, *TransferInterBankRequest) (*BankTransferResponse, error)
+	BankTransfer(context.Context, *BankTransferRequest) (*BankTransferResponse, error)
 	ExternalAccountInquiry(context.Context, *ExternalAccountInquiryRequest) (*ExternalAccountInquiryResponse, error)
 	InternalAccountInquiry(context.Context, *InternalAccountInquiryRequest) (*InternalAccountInquiryResponse, error)
 	VirtualAccountStatusInquiry(context.Context, *VirtualAccountStatusInquiryRequest) (*VirtualAccountStatusInquiryResponse, error)
@@ -156,6 +167,9 @@ func (UnimplementedSnapServiceServer) TransferIntraBank(context.Context, *Transf
 }
 func (UnimplementedSnapServiceServer) TransferInterBank(context.Context, *TransferInterBankRequest) (*BankTransferResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method TransferInterBank not implemented")
+}
+func (UnimplementedSnapServiceServer) BankTransfer(context.Context, *BankTransferRequest) (*BankTransferResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method BankTransfer not implemented")
 }
 func (UnimplementedSnapServiceServer) ExternalAccountInquiry(context.Context, *ExternalAccountInquiryRequest) (*ExternalAccountInquiryResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ExternalAccountInquiry not implemented")
@@ -272,6 +286,24 @@ func _SnapService_TransferInterBank_Handler(srv interface{}, ctx context.Context
 	return interceptor(ctx, in, info, handler)
 }
 
+func _SnapService_BankTransfer_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(BankTransferRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(SnapServiceServer).BankTransfer(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/snap.SnapService/BankTransfer",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(SnapServiceServer).BankTransfer(ctx, req.(*BankTransferRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 func _SnapService_ExternalAccountInquiry_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(ExternalAccountInquiryRequest)
 	if err := dec(in); err != nil {
@@ -370,6 +402,10 @@ var SnapService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "TransferInterBank",
 			Handler:    _SnapService_TransferInterBank_Handler,
+		},
+		{
+			MethodName: "BankTransfer",
+			Handler:    _SnapService_BankTransfer_Handler,
 		},
 		{
 			MethodName: "ExternalAccountInquiry",

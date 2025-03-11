@@ -382,6 +382,67 @@ proto.snap.SnapServicePromiseClient.prototype.transferInterBank =
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
+ *   !proto.snap.BankTransferRequest,
+ *   !proto.snap.BankTransferResponse>}
+ */
+const methodDescriptor_SnapService_BankTransfer = new grpc.web.MethodDescriptor(
+  '/snap.SnapService/BankTransfer',
+  grpc.web.MethodType.UNARY,
+  proto.snap.BankTransferRequest,
+  proto.snap.BankTransferResponse,
+  /**
+   * @param {!proto.snap.BankTransferRequest} request
+   * @return {!Uint8Array}
+   */
+  function(request) {
+    return request.serializeBinary();
+  },
+  proto.snap.BankTransferResponse.deserializeBinary
+);
+
+
+/**
+ * @param {!proto.snap.BankTransferRequest} request The
+ *     request proto
+ * @param {?Object<string, string>} metadata User defined
+ *     call metadata
+ * @param {function(?grpc.web.RpcError, ?proto.snap.BankTransferResponse)}
+ *     callback The callback function(error, response)
+ * @return {!grpc.web.ClientReadableStream<!proto.snap.BankTransferResponse>|undefined}
+ *     The XHR Node Readable Stream
+ */
+proto.snap.SnapServiceClient.prototype.bankTransfer =
+    function(request, metadata, callback) {
+  return this.client_.rpcCall(this.hostname_ +
+      '/snap.SnapService/BankTransfer',
+      request,
+      metadata || {},
+      methodDescriptor_SnapService_BankTransfer,
+      callback);
+};
+
+
+/**
+ * @param {!proto.snap.BankTransferRequest} request The
+ *     request proto
+ * @param {?Object<string, string>=} metadata User defined
+ *     call metadata
+ * @return {!Promise<!proto.snap.BankTransferResponse>}
+ *     Promise that resolves to the response
+ */
+proto.snap.SnapServicePromiseClient.prototype.bankTransfer =
+    function(request, metadata) {
+  return this.client_.unaryCall(this.hostname_ +
+      '/snap.SnapService/BankTransfer',
+      request,
+      metadata || {},
+      methodDescriptor_SnapService_BankTransfer);
+};
+
+
+/**
+ * @const
+ * @type {!grpc.web.MethodDescriptor<
  *   !proto.snap.ExternalAccountInquiryRequest,
  *   !proto.snap.ExternalAccountInquiryResponse>}
  */
