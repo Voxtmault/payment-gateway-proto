@@ -7,8 +7,8 @@
 package payment_service
 
 import (
-	snap_service "./snap-service"
 	context "context"
+	snap_service "go/snap-service"
 	grpc "google.golang.org/grpc"
 	codes "google.golang.org/grpc/codes"
 	status "google.golang.org/grpc/status"

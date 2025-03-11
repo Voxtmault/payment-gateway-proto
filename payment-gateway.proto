@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-option go_package = "./payment-service";
+option go_package = "go/payment-service";
 
 package payment;
 

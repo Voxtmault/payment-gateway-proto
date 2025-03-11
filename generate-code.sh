@@ -6,8 +6,8 @@ echo "Generating gRPC Codes"
 export PATH="$PATH:$(go env GOPATH)/bin"
 
 # Generate Go Codes
-protoc --go_out=./go --go-grpc_out=./go snap.proto
-protoc --go_out=./go --go-grpc_out=./go payment-gateway.proto
+protoc --go_out=./ --go-grpc_out=./ snap.proto
+protoc --go_out=./ --go-grpc_out=./ payment-gateway.proto
 echo "Go Codes Generated"
 
 # Generate JavaScript code

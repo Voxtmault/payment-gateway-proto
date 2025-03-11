@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-option go_package = "./snap-service";
+option go_package = "go/snap-service";
 
 package payment;
 
