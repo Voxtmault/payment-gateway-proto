@@ -4,10 +4,9 @@
 // 	protoc        v3.21.12
 // source: payment-gateway.proto
 
-package payment_service
+package __
 
 import (
-	snap_service "go/snap-service"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	reflect "reflect"
@@ -81,8 +80,8 @@ type GetVirtualAccountInfoResponse struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Response *snap_service.RPCResponse `protobuf:"bytes,1,opt,name=response,proto3" json:"response,omitempty"`
-	VaData   *VirtualAccountData       `protobuf:"bytes,2,opt,name=vaData,proto3" json:"vaData,omitempty"`
+	Response *RPCResponse        `protobuf:"bytes,1,opt,name=response,proto3" json:"response,omitempty"`
+	VaData   *VirtualAccountData `protobuf:"bytes,2,opt,name=vaData,proto3" json:"vaData,omitempty"`
 }
 
 func (x *GetVirtualAccountInfoResponse) Reset() {
@@ -117,7 +116,7 @@ func (*GetVirtualAccountInfoResponse) Descriptor() ([]byte, []int) {
 	return file_payment_gateway_proto_rawDescGZIP(), []int{1}
 }
 
-func (x *GetVirtualAccountInfoResponse) GetResponse() *snap_service.RPCResponse {
+func (x *GetVirtualAccountInfoResponse) GetResponse() *RPCResponse {
 	if x != nil {
 		return x.Response
 	}
@@ -136,12 +135,12 @@ type VirtualAccountData struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	VaNum                 string             `protobuf:"bytes,1,opt,name=vaNum,proto3" json:"vaNum,omitempty"`
-	ExpireDate            string             `protobuf:"bytes,2,opt,name=expireDate,proto3" json:"expireDate,omitempty"`
-	TransactionIdentifier string             `protobuf:"bytes,3,opt,name=transactionIdentifier,proto3" json:"transactionIdentifier,omitempty"`
-	BankInfo              *snap_service.Bank `protobuf:"bytes,4,opt,name=bankInfo,proto3" json:"bankInfo,omitempty"`
-	VaAccountName         string             `protobuf:"bytes,5,opt,name=vaAccountName,proto3" json:"vaAccountName,omitempty"`
-	TotalAmount           string             `protobuf:"bytes,6,opt,name=totalAmount,proto3" json:"totalAmount,omitempty"`
+	VaNum                 string `protobuf:"bytes,1,opt,name=vaNum,proto3" json:"vaNum,omitempty"`
+	ExpireDate            string `protobuf:"bytes,2,opt,name=expireDate,proto3" json:"expireDate,omitempty"`
+	TransactionIdentifier string `protobuf:"bytes,3,opt,name=transactionIdentifier,proto3" json:"transactionIdentifier,omitempty"`
+	BankInfo              *Bank  `protobuf:"bytes,4,opt,name=bankInfo,proto3" json:"bankInfo,omitempty"`
+	VaAccountName         string `protobuf:"bytes,5,opt,name=vaAccountName,proto3" json:"vaAccountName,omitempty"`
+	TotalAmount           string `protobuf:"bytes,6,opt,name=totalAmount,proto3" json:"totalAmount,omitempty"`
 }
 
 func (x *VirtualAccountData) Reset() {
@@ -197,7 +196,7 @@ func (x *VirtualAccountData) GetTransactionIdentifier() string {
 	return ""
 }
 
-func (x *VirtualAccountData) GetBankInfo() *snap_service.Bank {
+func (x *VirtualAccountData) GetBankInfo() *Bank {
 	if x != nil {
 		return x.BankInfo
 	}
@@ -269,9 +268,8 @@ var file_payment_gateway_proto_rawDesc = []byte{
 	0x12, 0x3c, 0x0a, 0x1a, 0x47, 0x65, 0x74, 0x41, 0x76, 0x61, 0x69, 0x6c, 0x61, 0x62, 0x6c, 0x65,
 	0x50, 0x61, 0x79, 0x6d, 0x65, 0x6e, 0x74, 0x4d, 0x65, 0x74, 0x68, 0x6f, 0x64, 0x73, 0x12, 0x0e,
 	0x2e, 0x70, 0x61, 0x79, 0x6d, 0x65, 0x6e, 0x74, 0x2e, 0x45, 0x6d, 0x70, 0x74, 0x79, 0x1a, 0x0e,
-	0x2e, 0x70, 0x61, 0x79, 0x6d, 0x65, 0x6e, 0x74, 0x2e, 0x45, 0x6d, 0x70, 0x74, 0x79, 0x42, 0x14,
-	0x5a, 0x12, 0x67, 0x6f, 0x2f, 0x70, 0x61, 0x79, 0x6d, 0x65, 0x6e, 0x74, 0x2d, 0x73, 0x65, 0x72,
-	0x76, 0x69, 0x63, 0x65, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
+	0x2e, 0x70, 0x61, 0x79, 0x6d, 0x65, 0x6e, 0x74, 0x2e, 0x45, 0x6d, 0x70, 0x74, 0x79, 0x42, 0x04,
+	0x5a, 0x02, 0x2e, 0x2f, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
 }
 
 var (
@@ -291,9 +289,9 @@ var file_payment_gateway_proto_goTypes = []interface{}{
 	(*GetVirtualAccountInfoRequest)(nil),  // 0: payment.GetVirtualAccountInfoRequest
 	(*GetVirtualAccountInfoResponse)(nil), // 1: payment.GetVirtualAccountInfoResponse
 	(*VirtualAccountData)(nil),            // 2: payment.VirtualAccountData
-	(*snap_service.RPCResponse)(nil),      // 3: payment.RPCResponse
-	(*snap_service.Bank)(nil),             // 4: payment.Bank
-	(*snap_service.Empty)(nil),            // 5: payment.Empty
+	(*RPCResponse)(nil),                   // 3: payment.RPCResponse
+	(*Bank)(nil),                          // 4: payment.Bank
+	(*Empty)(nil),                         // 5: payment.Empty
 }
 var file_payment_gateway_proto_depIdxs = []int32{
 	3, // 0: payment.GetVirtualAccountInfoResponse.response:type_name -> payment.RPCResponse
@@ -317,6 +315,7 @@ func file_payment_gateway_proto_init() {
 	if File_payment_gateway_proto != nil {
 		return
 	}
+	file_snap_proto_init()
 	if !protoimpl.UnsafeEnabled {
 		file_payment_gateway_proto_msgTypes[0].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*GetVirtualAccountInfoRequest); i {

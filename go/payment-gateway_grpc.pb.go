@@ -4,11 +4,10 @@
 // - protoc             v3.21.12
 // source: payment-gateway.proto
 
-package payment_service
+package __
 
 import (
 	context "context"
-	snap_service "go/snap-service"
 	grpc "google.golang.org/grpc"
 	codes "google.golang.org/grpc/codes"
 	status "google.golang.org/grpc/status"
@@ -25,8 +24,8 @@ const _ = grpc.SupportPackageIsVersion7
 type PaymentGatewayServiceClient interface {
 	GetVirtualAccountInfo(ctx context.Context, in *GetVirtualAccountInfoRequest, opts ...grpc.CallOption) (*GetVirtualAccountInfoResponse, error)
 	// Helper RPC
-	GetPartneredBanks(ctx context.Context, in *snap_service.Empty, opts ...grpc.CallOption) (*snap_service.Empty, error)
-	GetAvailablePaymentMethods(ctx context.Context, in *snap_service.Empty, opts ...grpc.CallOption) (*snap_service.Empty, error)
+	GetPartneredBanks(ctx context.Context, in *Empty, opts ...grpc.CallOption) (*Empty, error)
+	GetAvailablePaymentMethods(ctx context.Context, in *Empty, opts ...grpc.CallOption) (*Empty, error)
 }
 
 type paymentGatewayServiceClient struct {
@@ -46,8 +45,8 @@ func (c *paymentGatewayServiceClient) GetVirtualAccountInfo(ctx context.Context,
 	return out, nil
 }
 
-func (c *paymentGatewayServiceClient) GetPartneredBanks(ctx context.Context, in *snap_service.Empty, opts ...grpc.CallOption) (*snap_service.Empty, error) {
-	out := new(snap_service.Empty)
+func (c *paymentGatewayServiceClient) GetPartneredBanks(ctx context.Context, in *Empty, opts ...grpc.CallOption) (*Empty, error) {
+	out := new(Empty)
 	err := c.cc.Invoke(ctx, "/payment.PaymentGatewayService/GetPartneredBanks", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -55,8 +54,8 @@ func (c *paymentGatewayServiceClient) GetPartneredBanks(ctx context.Context, in 
 	return out, nil
 }
 
-func (c *paymentGatewayServiceClient) GetAvailablePaymentMethods(ctx context.Context, in *snap_service.Empty, opts ...grpc.CallOption) (*snap_service.Empty, error) {
-	out := new(snap_service.Empty)
+func (c *paymentGatewayServiceClient) GetAvailablePaymentMethods(ctx context.Context, in *Empty, opts ...grpc.CallOption) (*Empty, error) {
+	out := new(Empty)
 	err := c.cc.Invoke(ctx, "/payment.PaymentGatewayService/GetAvailablePaymentMethods", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -70,8 +69,8 @@ func (c *paymentGatewayServiceClient) GetAvailablePaymentMethods(ctx context.Con
 type PaymentGatewayServiceServer interface {
 	GetVirtualAccountInfo(context.Context, *GetVirtualAccountInfoRequest) (*GetVirtualAccountInfoResponse, error)
 	// Helper RPC
-	GetPartneredBanks(context.Context, *snap_service.Empty) (*snap_service.Empty, error)
-	GetAvailablePaymentMethods(context.Context, *snap_service.Empty) (*snap_service.Empty, error)
+	GetPartneredBanks(context.Context, *Empty) (*Empty, error)
+	GetAvailablePaymentMethods(context.Context, *Empty) (*Empty, error)
 	mustEmbedUnimplementedPaymentGatewayServiceServer()
 }
 
@@ -82,10 +81,10 @@ type UnimplementedPaymentGatewayServiceServer struct {
 func (UnimplementedPaymentGatewayServiceServer) GetVirtualAccountInfo(context.Context, *GetVirtualAccountInfoRequest) (*GetVirtualAccountInfoResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetVirtualAccountInfo not implemented")
 }
-func (UnimplementedPaymentGatewayServiceServer) GetPartneredBanks(context.Context, *snap_service.Empty) (*snap_service.Empty, error) {
+func (UnimplementedPaymentGatewayServiceServer) GetPartneredBanks(context.Context, *Empty) (*Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetPartneredBanks not implemented")
 }
-func (UnimplementedPaymentGatewayServiceServer) GetAvailablePaymentMethods(context.Context, *snap_service.Empty) (*snap_service.Empty, error) {
+func (UnimplementedPaymentGatewayServiceServer) GetAvailablePaymentMethods(context.Context, *Empty) (*Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetAvailablePaymentMethods not implemented")
 }
 func (UnimplementedPaymentGatewayServiceServer) mustEmbedUnimplementedPaymentGatewayServiceServer() {}
@@ -120,7 +119,7 @@ func _PaymentGatewayService_GetVirtualAccountInfo_Handler(srv interface{}, ctx c
 }
 
 func _PaymentGatewayService_GetPartneredBanks_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(snap_service.Empty)
+	in := new(Empty)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -132,13 +131,13 @@ func _PaymentGatewayService_GetPartneredBanks_Handler(srv interface{}, ctx conte
 		FullMethod: "/payment.PaymentGatewayService/GetPartneredBanks",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(PaymentGatewayServiceServer).GetPartneredBanks(ctx, req.(*snap_service.Empty))
+		return srv.(PaymentGatewayServiceServer).GetPartneredBanks(ctx, req.(*Empty))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
 func _PaymentGatewayService_GetAvailablePaymentMethods_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(snap_service.Empty)
+	in := new(Empty)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -150,7 +149,7 @@ func _PaymentGatewayService_GetAvailablePaymentMethods_Handler(srv interface{}, 
 		FullMethod: "/payment.PaymentGatewayService/GetAvailablePaymentMethods",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(PaymentGatewayServiceServer).GetAvailablePaymentMethods(ctx, req.(*snap_service.Empty))
+		return srv.(PaymentGatewayServiceServer).GetAvailablePaymentMethods(ctx, req.(*Empty))
 	}
 	return interceptor(ctx, in, info, handler)
 }

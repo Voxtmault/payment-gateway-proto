@@ -4,7 +4,7 @@
 // - protoc             v3.21.12
 // source: snap.proto
 
-package snap_service
+package __
 
 import (
 	context "context"
