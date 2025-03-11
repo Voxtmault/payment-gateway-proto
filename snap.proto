@@ -2,7 +2,7 @@ syntax = "proto3";
 
 option go_package = "./snap-service";
 
-package snap;
+package payment;
 
 // Not every snap service is implemented in this proto file, some are served via http 1.1 request
 service SnapService {

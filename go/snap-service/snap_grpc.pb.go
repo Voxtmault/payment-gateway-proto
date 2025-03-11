@@ -44,7 +44,7 @@ func NewSnapServiceClient(cc grpc.ClientConnInterface) SnapServiceClient {
 
 func (c *snapServiceClient) AddVirtualAccount(ctx context.Context, in *AddVirtualAccountRequest, opts ...grpc.CallOption) (*AddVirtualAccountResponse, error) {
 	out := new(AddVirtualAccountResponse)
-	err := c.cc.Invoke(ctx, "/snap.SnapService/AddVirtualAccount", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/payment.SnapService/AddVirtualAccount", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -53,7 +53,7 @@ func (c *snapServiceClient) AddVirtualAccount(ctx context.Context, in *AddVirtua
 
 func (c *snapServiceClient) BalanceInquiry(ctx context.Context, in *Empty, opts ...grpc.CallOption) (*BalanceInquiryResponse, error) {
 	out := new(BalanceInquiryResponse)
-	err := c.cc.Invoke(ctx, "/snap.SnapService/BalanceInquiry", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/payment.SnapService/BalanceInquiry", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -62,7 +62,7 @@ func (c *snapServiceClient) BalanceInquiry(ctx context.Context, in *Empty, opts 
 
 func (c *snapServiceClient) BankStatement(ctx context.Context, in *BankStatementRequest, opts ...grpc.CallOption) (*BankStatementResponse, error) {
 	out := new(BankStatementResponse)
-	err := c.cc.Invoke(ctx, "/snap.SnapService/BankStatement", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/payment.SnapService/BankStatement", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -71,7 +71,7 @@ func (c *snapServiceClient) BankStatement(ctx context.Context, in *BankStatement
 
 func (c *snapServiceClient) TransferIntraBank(ctx context.Context, in *TransferIntraBankRequest, opts ...grpc.CallOption) (*BankTransferResponse, error) {
 	out := new(BankTransferResponse)
-	err := c.cc.Invoke(ctx, "/snap.SnapService/TransferIntraBank", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/payment.SnapService/TransferIntraBank", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -80,7 +80,7 @@ func (c *snapServiceClient) TransferIntraBank(ctx context.Context, in *TransferI
 
 func (c *snapServiceClient) TransferInterBank(ctx context.Context, in *TransferInterBankRequest, opts ...grpc.CallOption) (*BankTransferResponse, error) {
 	out := new(BankTransferResponse)
-	err := c.cc.Invoke(ctx, "/snap.SnapService/TransferInterBank", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/payment.SnapService/TransferInterBank", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -89,7 +89,7 @@ func (c *snapServiceClient) TransferInterBank(ctx context.Context, in *TransferI
 
 func (c *snapServiceClient) BankTransfer(ctx context.Context, in *BankTransferRequest, opts ...grpc.CallOption) (*BankTransferResponse, error) {
 	out := new(BankTransferResponse)
-	err := c.cc.Invoke(ctx, "/snap.SnapService/BankTransfer", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/payment.SnapService/BankTransfer", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -98,7 +98,7 @@ func (c *snapServiceClient) BankTransfer(ctx context.Context, in *BankTransferRe
 
 func (c *snapServiceClient) ExternalAccountInquiry(ctx context.Context, in *ExternalAccountInquiryRequest, opts ...grpc.CallOption) (*ExternalAccountInquiryResponse, error) {
 	out := new(ExternalAccountInquiryResponse)
-	err := c.cc.Invoke(ctx, "/snap.SnapService/ExternalAccountInquiry", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/payment.SnapService/ExternalAccountInquiry", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -107,7 +107,7 @@ func (c *snapServiceClient) ExternalAccountInquiry(ctx context.Context, in *Exte
 
 func (c *snapServiceClient) InternalAccountInquiry(ctx context.Context, in *InternalAccountInquiryRequest, opts ...grpc.CallOption) (*InternalAccountInquiryResponse, error) {
 	out := new(InternalAccountInquiryResponse)
-	err := c.cc.Invoke(ctx, "/snap.SnapService/InternalAccountInquiry", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/payment.SnapService/InternalAccountInquiry", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -116,7 +116,7 @@ func (c *snapServiceClient) InternalAccountInquiry(ctx context.Context, in *Inte
 
 func (c *snapServiceClient) VirtualAccountStatusInquiry(ctx context.Context, in *VirtualAccountStatusInquiryRequest, opts ...grpc.CallOption) (*VirtualAccountStatusInquiryResponse, error) {
 	out := new(VirtualAccountStatusInquiryResponse)
-	err := c.cc.Invoke(ctx, "/snap.SnapService/VirtualAccountStatusInquiry", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/payment.SnapService/VirtualAccountStatusInquiry", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -125,7 +125,7 @@ func (c *snapServiceClient) VirtualAccountStatusInquiry(ctx context.Context, in 
 
 func (c *snapServiceClient) TransferStatusInquiry(ctx context.Context, in *TransferStatusInquiryRequest, opts ...grpc.CallOption) (*TransferStatusInquiryResponse, error) {
 	out := new(TransferStatusInquiryResponse)
-	err := c.cc.Invoke(ctx, "/snap.SnapService/TransferStatusInquiry", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/payment.SnapService/TransferStatusInquiry", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -206,7 +206,7 @@ func _SnapService_AddVirtualAccount_Handler(srv interface{}, ctx context.Context
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/snap.SnapService/AddVirtualAccount",
+		FullMethod: "/payment.SnapService/AddVirtualAccount",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(SnapServiceServer).AddVirtualAccount(ctx, req.(*AddVirtualAccountRequest))
@@ -224,7 +224,7 @@ func _SnapService_BalanceInquiry_Handler(srv interface{}, ctx context.Context, d
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/snap.SnapService/BalanceInquiry",
+		FullMethod: "/payment.SnapService/BalanceInquiry",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(SnapServiceServer).BalanceInquiry(ctx, req.(*Empty))
@@ -242,7 +242,7 @@ func _SnapService_BankStatement_Handler(srv interface{}, ctx context.Context, de
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/snap.SnapService/BankStatement",
+		FullMethod: "/payment.SnapService/BankStatement",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(SnapServiceServer).BankStatement(ctx, req.(*BankStatementRequest))
@@ -260,7 +260,7 @@ func _SnapService_TransferIntraBank_Handler(srv interface{}, ctx context.Context
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/snap.SnapService/TransferIntraBank",
+		FullMethod: "/payment.SnapService/TransferIntraBank",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(SnapServiceServer).TransferIntraBank(ctx, req.(*TransferIntraBankRequest))
@@ -278,7 +278,7 @@ func _SnapService_TransferInterBank_Handler(srv interface{}, ctx context.Context
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/snap.SnapService/TransferInterBank",
+		FullMethod: "/payment.SnapService/TransferInterBank",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(SnapServiceServer).TransferInterBank(ctx, req.(*TransferInterBankRequest))
@@ -296,7 +296,7 @@ func _SnapService_BankTransfer_Handler(srv interface{}, ctx context.Context, dec
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/snap.SnapService/BankTransfer",
+		FullMethod: "/payment.SnapService/BankTransfer",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(SnapServiceServer).BankTransfer(ctx, req.(*BankTransferRequest))
@@ -314,7 +314,7 @@ func _SnapService_ExternalAccountInquiry_Handler(srv interface{}, ctx context.Co
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/snap.SnapService/ExternalAccountInquiry",
+		FullMethod: "/payment.SnapService/ExternalAccountInquiry",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(SnapServiceServer).ExternalAccountInquiry(ctx, req.(*ExternalAccountInquiryRequest))
@@ -332,7 +332,7 @@ func _SnapService_InternalAccountInquiry_Handler(srv interface{}, ctx context.Co
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/snap.SnapService/InternalAccountInquiry",
+		FullMethod: "/payment.SnapService/InternalAccountInquiry",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(SnapServiceServer).InternalAccountInquiry(ctx, req.(*InternalAccountInquiryRequest))
@@ -350,7 +350,7 @@ func _SnapService_VirtualAccountStatusInquiry_Handler(srv interface{}, ctx conte
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/snap.SnapService/VirtualAccountStatusInquiry",
+		FullMethod: "/payment.SnapService/VirtualAccountStatusInquiry",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(SnapServiceServer).VirtualAccountStatusInquiry(ctx, req.(*VirtualAccountStatusInquiryRequest))
@@ -368,7 +368,7 @@ func _SnapService_TransferStatusInquiry_Handler(srv interface{}, ctx context.Con
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/snap.SnapService/TransferStatusInquiry",
+		FullMethod: "/payment.SnapService/TransferStatusInquiry",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(SnapServiceServer).TransferStatusInquiry(ctx, req.(*TransferStatusInquiryRequest))
@@ -380,7 +380,7 @@ func _SnapService_TransferStatusInquiry_Handler(srv interface{}, ctx context.Con
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
 var SnapService_ServiceDesc = grpc.ServiceDesc{
-	ServiceName: "snap.SnapService",
+	ServiceName: "payment.SnapService",
 	HandlerType: (*SnapServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{

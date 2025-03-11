@@ -1,0 +1,35 @@
+syntax = "proto3";
+
+option go_package = "./payment-service";
+
+package payment;
+
+import "snap.proto";
+
+service PaymentGatewayService {
+    rpc GetVirtualAccountInfo(GetVirtualAccountInfoRequest) returns (GetVirtualAccountInfoResponse);
+
+    // Helper RPC
+    rpc GetPartneredBanks(Empty) returns (Empty);
+    rpc GetAvailablePaymentMethods(Empty) returns (Empty);
+}
+
+message GetVirtualAccountInfoRequest {
+    string transactionIdentifier = 1;
+    string idBank = 2;
+}
+message GetVirtualAccountInfoResponse {
+    RPCResponse response = 1;
+    VirtualAccountData vaData = 2;
+}
+
+// Model Definitions
+
+message VirtualAccountData {
+    string vaNum = 1;
+    string expireDate = 2;
+    string transactionIdentifier = 3;
+    Bank bankInfo = 4;
+    string vaAccountName = 5;
+    string totalAmount = 6;
+}

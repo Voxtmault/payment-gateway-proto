@@ -1,5 +1,5 @@
 /**
- * @fileoverview gRPC-Web generated client stub for snap
+ * @fileoverview gRPC-Web generated client stub for payment
  * @enhanceable
  * @public
  */
@@ -20,7 +20,7 @@ const grpc = {};
 grpc.web = require('grpc-web');
 
 const proto = {};
-proto.snap = require('./snap_pb.js');
+proto.payment = require('./snap_pb.js');
 
 /**
  * @param {string} hostname
@@ -30,7 +30,7 @@ proto.snap = require('./snap_pb.js');
  * @struct
  * @final
  */
-proto.snap.SnapServiceClient =
+proto.payment.SnapServiceClient =
     function(hostname, credentials, options) {
   if (!options) options = {};
   options.format = 'text';
@@ -56,7 +56,7 @@ proto.snap.SnapServiceClient =
  * @struct
  * @final
  */
-proto.snap.SnapServicePromiseClient =
+proto.payment.SnapServicePromiseClient =
     function(hostname, credentials, options) {
   if (!options) options = {};
   options.format = 'text';
@@ -77,39 +77,39 @@ proto.snap.SnapServicePromiseClient =
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.snap.AddVirtualAccountRequest,
- *   !proto.snap.AddVirtualAccountResponse>}
+ *   !proto.payment.AddVirtualAccountRequest,
+ *   !proto.payment.AddVirtualAccountResponse>}
  */
 const methodDescriptor_SnapService_AddVirtualAccount = new grpc.web.MethodDescriptor(
-  '/snap.SnapService/AddVirtualAccount',
+  '/payment.SnapService/AddVirtualAccount',
   grpc.web.MethodType.UNARY,
-  proto.snap.AddVirtualAccountRequest,
-  proto.snap.AddVirtualAccountResponse,
+  proto.payment.AddVirtualAccountRequest,
+  proto.payment.AddVirtualAccountResponse,
   /**
-   * @param {!proto.snap.AddVirtualAccountRequest} request
+   * @param {!proto.payment.AddVirtualAccountRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.snap.AddVirtualAccountResponse.deserializeBinary
+  proto.payment.AddVirtualAccountResponse.deserializeBinary
 );
 
 
 /**
- * @param {!proto.snap.AddVirtualAccountRequest} request The
+ * @param {!proto.payment.AddVirtualAccountRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.RpcError, ?proto.snap.AddVirtualAccountResponse)}
+ * @param {function(?grpc.web.RpcError, ?proto.payment.AddVirtualAccountResponse)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.snap.AddVirtualAccountResponse>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.payment.AddVirtualAccountResponse>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.snap.SnapServiceClient.prototype.addVirtualAccount =
+proto.payment.SnapServiceClient.prototype.addVirtualAccount =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/snap.SnapService/AddVirtualAccount',
+      '/payment.SnapService/AddVirtualAccount',
       request,
       metadata || {},
       methodDescriptor_SnapService_AddVirtualAccount,
@@ -118,17 +118,17 @@ proto.snap.SnapServiceClient.prototype.addVirtualAccount =
 
 
 /**
- * @param {!proto.snap.AddVirtualAccountRequest} request The
+ * @param {!proto.payment.AddVirtualAccountRequest} request The
  *     request proto
  * @param {?Object<string, string>=} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.snap.AddVirtualAccountResponse>}
+ * @return {!Promise<!proto.payment.AddVirtualAccountResponse>}
  *     Promise that resolves to the response
  */
-proto.snap.SnapServicePromiseClient.prototype.addVirtualAccount =
+proto.payment.SnapServicePromiseClient.prototype.addVirtualAccount =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/snap.SnapService/AddVirtualAccount',
+      '/payment.SnapService/AddVirtualAccount',
       request,
       metadata || {},
       methodDescriptor_SnapService_AddVirtualAccount);
@@ -138,39 +138,39 @@ proto.snap.SnapServicePromiseClient.prototype.addVirtualAccount =
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.snap.Empty,
- *   !proto.snap.BalanceInquiryResponse>}
+ *   !proto.payment.Empty,
+ *   !proto.payment.BalanceInquiryResponse>}
  */
 const methodDescriptor_SnapService_BalanceInquiry = new grpc.web.MethodDescriptor(
-  '/snap.SnapService/BalanceInquiry',
+  '/payment.SnapService/BalanceInquiry',
   grpc.web.MethodType.UNARY,
-  proto.snap.Empty,
-  proto.snap.BalanceInquiryResponse,
+  proto.payment.Empty,
+  proto.payment.BalanceInquiryResponse,
   /**
-   * @param {!proto.snap.Empty} request
+   * @param {!proto.payment.Empty} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.snap.BalanceInquiryResponse.deserializeBinary
+  proto.payment.BalanceInquiryResponse.deserializeBinary
 );
 
 
 /**
- * @param {!proto.snap.Empty} request The
+ * @param {!proto.payment.Empty} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.RpcError, ?proto.snap.BalanceInquiryResponse)}
+ * @param {function(?grpc.web.RpcError, ?proto.payment.BalanceInquiryResponse)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.snap.BalanceInquiryResponse>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.payment.BalanceInquiryResponse>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.snap.SnapServiceClient.prototype.balanceInquiry =
+proto.payment.SnapServiceClient.prototype.balanceInquiry =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/snap.SnapService/BalanceInquiry',
+      '/payment.SnapService/BalanceInquiry',
       request,
       metadata || {},
       methodDescriptor_SnapService_BalanceInquiry,
@@ -179,17 +179,17 @@ proto.snap.SnapServiceClient.prototype.balanceInquiry =
 
 
 /**
- * @param {!proto.snap.Empty} request The
+ * @param {!proto.payment.Empty} request The
  *     request proto
  * @param {?Object<string, string>=} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.snap.BalanceInquiryResponse>}
+ * @return {!Promise<!proto.payment.BalanceInquiryResponse>}
  *     Promise that resolves to the response
  */
-proto.snap.SnapServicePromiseClient.prototype.balanceInquiry =
+proto.payment.SnapServicePromiseClient.prototype.balanceInquiry =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/snap.SnapService/BalanceInquiry',
+      '/payment.SnapService/BalanceInquiry',
       request,
       metadata || {},
       methodDescriptor_SnapService_BalanceInquiry);
@@ -199,39 +199,39 @@ proto.snap.SnapServicePromiseClient.prototype.balanceInquiry =
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.snap.BankStatementRequest,
- *   !proto.snap.BankStatementResponse>}
+ *   !proto.payment.BankStatementRequest,
+ *   !proto.payment.BankStatementResponse>}
  */
 const methodDescriptor_SnapService_BankStatement = new grpc.web.MethodDescriptor(
-  '/snap.SnapService/BankStatement',
+  '/payment.SnapService/BankStatement',
   grpc.web.MethodType.UNARY,
-  proto.snap.BankStatementRequest,
-  proto.snap.BankStatementResponse,
+  proto.payment.BankStatementRequest,
+  proto.payment.BankStatementResponse,
   /**
-   * @param {!proto.snap.BankStatementRequest} request
+   * @param {!proto.payment.BankStatementRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.snap.BankStatementResponse.deserializeBinary
+  proto.payment.BankStatementResponse.deserializeBinary
 );
 
 
 /**
- * @param {!proto.snap.BankStatementRequest} request The
+ * @param {!proto.payment.BankStatementRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.RpcError, ?proto.snap.BankStatementResponse)}
+ * @param {function(?grpc.web.RpcError, ?proto.payment.BankStatementResponse)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.snap.BankStatementResponse>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.payment.BankStatementResponse>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.snap.SnapServiceClient.prototype.bankStatement =
+proto.payment.SnapServiceClient.prototype.bankStatement =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/snap.SnapService/BankStatement',
+      '/payment.SnapService/BankStatement',
       request,
       metadata || {},
       methodDescriptor_SnapService_BankStatement,
@@ -240,17 +240,17 @@ proto.snap.SnapServiceClient.prototype.bankStatement =
 
 
 /**
- * @param {!proto.snap.BankStatementRequest} request The
+ * @param {!proto.payment.BankStatementRequest} request The
  *     request proto
  * @param {?Object<string, string>=} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.snap.BankStatementResponse>}
+ * @return {!Promise<!proto.payment.BankStatementResponse>}
  *     Promise that resolves to the response
  */
-proto.snap.SnapServicePromiseClient.prototype.bankStatement =
+proto.payment.SnapServicePromiseClient.prototype.bankStatement =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/snap.SnapService/BankStatement',
+      '/payment.SnapService/BankStatement',
       request,
       metadata || {},
       methodDescriptor_SnapService_BankStatement);
@@ -260,39 +260,39 @@ proto.snap.SnapServicePromiseClient.prototype.bankStatement =
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.snap.TransferIntraBankRequest,
- *   !proto.snap.BankTransferResponse>}
+ *   !proto.payment.TransferIntraBankRequest,
+ *   !proto.payment.BankTransferResponse>}
  */
 const methodDescriptor_SnapService_TransferIntraBank = new grpc.web.MethodDescriptor(
-  '/snap.SnapService/TransferIntraBank',
+  '/payment.SnapService/TransferIntraBank',
   grpc.web.MethodType.UNARY,
-  proto.snap.TransferIntraBankRequest,
-  proto.snap.BankTransferResponse,
+  proto.payment.TransferIntraBankRequest,
+  proto.payment.BankTransferResponse,
   /**
-   * @param {!proto.snap.TransferIntraBankRequest} request
+   * @param {!proto.payment.TransferIntraBankRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.snap.BankTransferResponse.deserializeBinary
+  proto.payment.BankTransferResponse.deserializeBinary
 );
 
 
 /**
- * @param {!proto.snap.TransferIntraBankRequest} request The
+ * @param {!proto.payment.TransferIntraBankRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.RpcError, ?proto.snap.BankTransferResponse)}
+ * @param {function(?grpc.web.RpcError, ?proto.payment.BankTransferResponse)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.snap.BankTransferResponse>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.payment.BankTransferResponse>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.snap.SnapServiceClient.prototype.transferIntraBank =
+proto.payment.SnapServiceClient.prototype.transferIntraBank =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/snap.SnapService/TransferIntraBank',
+      '/payment.SnapService/TransferIntraBank',
       request,
       metadata || {},
       methodDescriptor_SnapService_TransferIntraBank,
@@ -301,17 +301,17 @@ proto.snap.SnapServiceClient.prototype.transferIntraBank =
 
 
 /**
- * @param {!proto.snap.TransferIntraBankRequest} request The
+ * @param {!proto.payment.TransferIntraBankRequest} request The
  *     request proto
  * @param {?Object<string, string>=} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.snap.BankTransferResponse>}
+ * @return {!Promise<!proto.payment.BankTransferResponse>}
  *     Promise that resolves to the response
  */
-proto.snap.SnapServicePromiseClient.prototype.transferIntraBank =
+proto.payment.SnapServicePromiseClient.prototype.transferIntraBank =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/snap.SnapService/TransferIntraBank',
+      '/payment.SnapService/TransferIntraBank',
       request,
       metadata || {},
       methodDescriptor_SnapService_TransferIntraBank);
@@ -321,39 +321,39 @@ proto.snap.SnapServicePromiseClient.prototype.transferIntraBank =
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.snap.TransferInterBankRequest,
- *   !proto.snap.BankTransferResponse>}
+ *   !proto.payment.TransferInterBankRequest,
+ *   !proto.payment.BankTransferResponse>}
  */
 const methodDescriptor_SnapService_TransferInterBank = new grpc.web.MethodDescriptor(
-  '/snap.SnapService/TransferInterBank',
+  '/payment.SnapService/TransferInterBank',
   grpc.web.MethodType.UNARY,
-  proto.snap.TransferInterBankRequest,
-  proto.snap.BankTransferResponse,
+  proto.payment.TransferInterBankRequest,
+  proto.payment.BankTransferResponse,
   /**
-   * @param {!proto.snap.TransferInterBankRequest} request
+   * @param {!proto.payment.TransferInterBankRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.snap.BankTransferResponse.deserializeBinary
+  proto.payment.BankTransferResponse.deserializeBinary
 );
 
 
 /**
- * @param {!proto.snap.TransferInterBankRequest} request The
+ * @param {!proto.payment.TransferInterBankRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.RpcError, ?proto.snap.BankTransferResponse)}
+ * @param {function(?grpc.web.RpcError, ?proto.payment.BankTransferResponse)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.snap.BankTransferResponse>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.payment.BankTransferResponse>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.snap.SnapServiceClient.prototype.transferInterBank =
+proto.payment.SnapServiceClient.prototype.transferInterBank =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/snap.SnapService/TransferInterBank',
+      '/payment.SnapService/TransferInterBank',
       request,
       metadata || {},
       methodDescriptor_SnapService_TransferInterBank,
@@ -362,17 +362,17 @@ proto.snap.SnapServiceClient.prototype.transferInterBank =
 
 
 /**
- * @param {!proto.snap.TransferInterBankRequest} request The
+ * @param {!proto.payment.TransferInterBankRequest} request The
  *     request proto
  * @param {?Object<string, string>=} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.snap.BankTransferResponse>}
+ * @return {!Promise<!proto.payment.BankTransferResponse>}
  *     Promise that resolves to the response
  */
-proto.snap.SnapServicePromiseClient.prototype.transferInterBank =
+proto.payment.SnapServicePromiseClient.prototype.transferInterBank =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/snap.SnapService/TransferInterBank',
+      '/payment.SnapService/TransferInterBank',
       request,
       metadata || {},
       methodDescriptor_SnapService_TransferInterBank);
@@ -382,39 +382,39 @@ proto.snap.SnapServicePromiseClient.prototype.transferInterBank =
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.snap.BankTransferRequest,
- *   !proto.snap.BankTransferResponse>}
+ *   !proto.payment.BankTransferRequest,
+ *   !proto.payment.BankTransferResponse>}
  */
 const methodDescriptor_SnapService_BankTransfer = new grpc.web.MethodDescriptor(
-  '/snap.SnapService/BankTransfer',
+  '/payment.SnapService/BankTransfer',
   grpc.web.MethodType.UNARY,
-  proto.snap.BankTransferRequest,
-  proto.snap.BankTransferResponse,
+  proto.payment.BankTransferRequest,
+  proto.payment.BankTransferResponse,
   /**
-   * @param {!proto.snap.BankTransferRequest} request
+   * @param {!proto.payment.BankTransferRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.snap.BankTransferResponse.deserializeBinary
+  proto.payment.BankTransferResponse.deserializeBinary
 );
 
 
 /**
- * @param {!proto.snap.BankTransferRequest} request The
+ * @param {!proto.payment.BankTransferRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.RpcError, ?proto.snap.BankTransferResponse)}
+ * @param {function(?grpc.web.RpcError, ?proto.payment.BankTransferResponse)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.snap.BankTransferResponse>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.payment.BankTransferResponse>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.snap.SnapServiceClient.prototype.bankTransfer =
+proto.payment.SnapServiceClient.prototype.bankTransfer =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/snap.SnapService/BankTransfer',
+      '/payment.SnapService/BankTransfer',
       request,
       metadata || {},
       methodDescriptor_SnapService_BankTransfer,
@@ -423,17 +423,17 @@ proto.snap.SnapServiceClient.prototype.bankTransfer =
 
 
 /**
- * @param {!proto.snap.BankTransferRequest} request The
+ * @param {!proto.payment.BankTransferRequest} request The
  *     request proto
  * @param {?Object<string, string>=} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.snap.BankTransferResponse>}
+ * @return {!Promise<!proto.payment.BankTransferResponse>}
  *     Promise that resolves to the response
  */
-proto.snap.SnapServicePromiseClient.prototype.bankTransfer =
+proto.payment.SnapServicePromiseClient.prototype.bankTransfer =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/snap.SnapService/BankTransfer',
+      '/payment.SnapService/BankTransfer',
       request,
       metadata || {},
       methodDescriptor_SnapService_BankTransfer);
@@ -443,39 +443,39 @@ proto.snap.SnapServicePromiseClient.prototype.bankTransfer =
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.snap.ExternalAccountInquiryRequest,
- *   !proto.snap.ExternalAccountInquiryResponse>}
+ *   !proto.payment.ExternalAccountInquiryRequest,
+ *   !proto.payment.ExternalAccountInquiryResponse>}
  */
 const methodDescriptor_SnapService_ExternalAccountInquiry = new grpc.web.MethodDescriptor(
-  '/snap.SnapService/ExternalAccountInquiry',
+  '/payment.SnapService/ExternalAccountInquiry',
   grpc.web.MethodType.UNARY,
-  proto.snap.ExternalAccountInquiryRequest,
-  proto.snap.ExternalAccountInquiryResponse,
+  proto.payment.ExternalAccountInquiryRequest,
+  proto.payment.ExternalAccountInquiryResponse,
   /**
-   * @param {!proto.snap.ExternalAccountInquiryRequest} request
+   * @param {!proto.payment.ExternalAccountInquiryRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.snap.ExternalAccountInquiryResponse.deserializeBinary
+  proto.payment.ExternalAccountInquiryResponse.deserializeBinary
 );
 
 
 /**
- * @param {!proto.snap.ExternalAccountInquiryRequest} request The
+ * @param {!proto.payment.ExternalAccountInquiryRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.RpcError, ?proto.snap.ExternalAccountInquiryResponse)}
+ * @param {function(?grpc.web.RpcError, ?proto.payment.ExternalAccountInquiryResponse)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.snap.ExternalAccountInquiryResponse>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.payment.ExternalAccountInquiryResponse>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.snap.SnapServiceClient.prototype.externalAccountInquiry =
+proto.payment.SnapServiceClient.prototype.externalAccountInquiry =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/snap.SnapService/ExternalAccountInquiry',
+      '/payment.SnapService/ExternalAccountInquiry',
       request,
       metadata || {},
       methodDescriptor_SnapService_ExternalAccountInquiry,
@@ -484,17 +484,17 @@ proto.snap.SnapServiceClient.prototype.externalAccountInquiry =
 
 
 /**
- * @param {!proto.snap.ExternalAccountInquiryRequest} request The
+ * @param {!proto.payment.ExternalAccountInquiryRequest} request The
  *     request proto
  * @param {?Object<string, string>=} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.snap.ExternalAccountInquiryResponse>}
+ * @return {!Promise<!proto.payment.ExternalAccountInquiryResponse>}
  *     Promise that resolves to the response
  */
-proto.snap.SnapServicePromiseClient.prototype.externalAccountInquiry =
+proto.payment.SnapServicePromiseClient.prototype.externalAccountInquiry =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/snap.SnapService/ExternalAccountInquiry',
+      '/payment.SnapService/ExternalAccountInquiry',
       request,
       metadata || {},
       methodDescriptor_SnapService_ExternalAccountInquiry);
@@ -504,39 +504,39 @@ proto.snap.SnapServicePromiseClient.prototype.externalAccountInquiry =
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.snap.InternalAccountInquiryRequest,
- *   !proto.snap.InternalAccountInquiryResponse>}
+ *   !proto.payment.InternalAccountInquiryRequest,
+ *   !proto.payment.InternalAccountInquiryResponse>}
  */
 const methodDescriptor_SnapService_InternalAccountInquiry = new grpc.web.MethodDescriptor(
-  '/snap.SnapService/InternalAccountInquiry',
+  '/payment.SnapService/InternalAccountInquiry',
   grpc.web.MethodType.UNARY,
-  proto.snap.InternalAccountInquiryRequest,
-  proto.snap.InternalAccountInquiryResponse,
+  proto.payment.InternalAccountInquiryRequest,
+  proto.payment.InternalAccountInquiryResponse,
   /**
-   * @param {!proto.snap.InternalAccountInquiryRequest} request
+   * @param {!proto.payment.InternalAccountInquiryRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.snap.InternalAccountInquiryResponse.deserializeBinary
+  proto.payment.InternalAccountInquiryResponse.deserializeBinary
 );
 
 
 /**
- * @param {!proto.snap.InternalAccountInquiryRequest} request The
+ * @param {!proto.payment.InternalAccountInquiryRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.RpcError, ?proto.snap.InternalAccountInquiryResponse)}
+ * @param {function(?grpc.web.RpcError, ?proto.payment.InternalAccountInquiryResponse)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.snap.InternalAccountInquiryResponse>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.payment.InternalAccountInquiryResponse>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.snap.SnapServiceClient.prototype.internalAccountInquiry =
+proto.payment.SnapServiceClient.prototype.internalAccountInquiry =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/snap.SnapService/InternalAccountInquiry',
+      '/payment.SnapService/InternalAccountInquiry',
       request,
       metadata || {},
       methodDescriptor_SnapService_InternalAccountInquiry,
@@ -545,17 +545,17 @@ proto.snap.SnapServiceClient.prototype.internalAccountInquiry =
 
 
 /**
- * @param {!proto.snap.InternalAccountInquiryRequest} request The
+ * @param {!proto.payment.InternalAccountInquiryRequest} request The
  *     request proto
  * @param {?Object<string, string>=} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.snap.InternalAccountInquiryResponse>}
+ * @return {!Promise<!proto.payment.InternalAccountInquiryResponse>}
  *     Promise that resolves to the response
  */
-proto.snap.SnapServicePromiseClient.prototype.internalAccountInquiry =
+proto.payment.SnapServicePromiseClient.prototype.internalAccountInquiry =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/snap.SnapService/InternalAccountInquiry',
+      '/payment.SnapService/InternalAccountInquiry',
       request,
       metadata || {},
       methodDescriptor_SnapService_InternalAccountInquiry);
@@ -565,39 +565,39 @@ proto.snap.SnapServicePromiseClient.prototype.internalAccountInquiry =
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.snap.VirtualAccountStatusInquiryRequest,
- *   !proto.snap.VirtualAccountStatusInquiryResponse>}
+ *   !proto.payment.VirtualAccountStatusInquiryRequest,
+ *   !proto.payment.VirtualAccountStatusInquiryResponse>}
  */
 const methodDescriptor_SnapService_VirtualAccountStatusInquiry = new grpc.web.MethodDescriptor(
-  '/snap.SnapService/VirtualAccountStatusInquiry',
+  '/payment.SnapService/VirtualAccountStatusInquiry',
   grpc.web.MethodType.UNARY,
-  proto.snap.VirtualAccountStatusInquiryRequest,
-  proto.snap.VirtualAccountStatusInquiryResponse,
+  proto.payment.VirtualAccountStatusInquiryRequest,
+  proto.payment.VirtualAccountStatusInquiryResponse,
   /**
-   * @param {!proto.snap.VirtualAccountStatusInquiryRequest} request
+   * @param {!proto.payment.VirtualAccountStatusInquiryRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.snap.VirtualAccountStatusInquiryResponse.deserializeBinary
+  proto.payment.VirtualAccountStatusInquiryResponse.deserializeBinary
 );
 
 
 /**
- * @param {!proto.snap.VirtualAccountStatusInquiryRequest} request The
+ * @param {!proto.payment.VirtualAccountStatusInquiryRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.RpcError, ?proto.snap.VirtualAccountStatusInquiryResponse)}
+ * @param {function(?grpc.web.RpcError, ?proto.payment.VirtualAccountStatusInquiryResponse)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.snap.VirtualAccountStatusInquiryResponse>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.payment.VirtualAccountStatusInquiryResponse>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.snap.SnapServiceClient.prototype.virtualAccountStatusInquiry =
+proto.payment.SnapServiceClient.prototype.virtualAccountStatusInquiry =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/snap.SnapService/VirtualAccountStatusInquiry',
+      '/payment.SnapService/VirtualAccountStatusInquiry',
       request,
       metadata || {},
       methodDescriptor_SnapService_VirtualAccountStatusInquiry,
@@ -606,17 +606,17 @@ proto.snap.SnapServiceClient.prototype.virtualAccountStatusInquiry =
 
 
 /**
- * @param {!proto.snap.VirtualAccountStatusInquiryRequest} request The
+ * @param {!proto.payment.VirtualAccountStatusInquiryRequest} request The
  *     request proto
  * @param {?Object<string, string>=} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.snap.VirtualAccountStatusInquiryResponse>}
+ * @return {!Promise<!proto.payment.VirtualAccountStatusInquiryResponse>}
  *     Promise that resolves to the response
  */
-proto.snap.SnapServicePromiseClient.prototype.virtualAccountStatusInquiry =
+proto.payment.SnapServicePromiseClient.prototype.virtualAccountStatusInquiry =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/snap.SnapService/VirtualAccountStatusInquiry',
+      '/payment.SnapService/VirtualAccountStatusInquiry',
       request,
       metadata || {},
       methodDescriptor_SnapService_VirtualAccountStatusInquiry);
@@ -626,39 +626,39 @@ proto.snap.SnapServicePromiseClient.prototype.virtualAccountStatusInquiry =
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.snap.TransferStatusInquiryRequest,
- *   !proto.snap.TransferStatusInquiryResponse>}
+ *   !proto.payment.TransferStatusInquiryRequest,
+ *   !proto.payment.TransferStatusInquiryResponse>}
  */
 const methodDescriptor_SnapService_TransferStatusInquiry = new grpc.web.MethodDescriptor(
-  '/snap.SnapService/TransferStatusInquiry',
+  '/payment.SnapService/TransferStatusInquiry',
   grpc.web.MethodType.UNARY,
-  proto.snap.TransferStatusInquiryRequest,
-  proto.snap.TransferStatusInquiryResponse,
+  proto.payment.TransferStatusInquiryRequest,
+  proto.payment.TransferStatusInquiryResponse,
   /**
-   * @param {!proto.snap.TransferStatusInquiryRequest} request
+   * @param {!proto.payment.TransferStatusInquiryRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.snap.TransferStatusInquiryResponse.deserializeBinary
+  proto.payment.TransferStatusInquiryResponse.deserializeBinary
 );
 
 
 /**
- * @param {!proto.snap.TransferStatusInquiryRequest} request The
+ * @param {!proto.payment.TransferStatusInquiryRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.RpcError, ?proto.snap.TransferStatusInquiryResponse)}
+ * @param {function(?grpc.web.RpcError, ?proto.payment.TransferStatusInquiryResponse)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.snap.TransferStatusInquiryResponse>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.payment.TransferStatusInquiryResponse>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.snap.SnapServiceClient.prototype.transferStatusInquiry =
+proto.payment.SnapServiceClient.prototype.transferStatusInquiry =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/snap.SnapService/TransferStatusInquiry',
+      '/payment.SnapService/TransferStatusInquiry',
       request,
       metadata || {},
       methodDescriptor_SnapService_TransferStatusInquiry,
@@ -667,22 +667,22 @@ proto.snap.SnapServiceClient.prototype.transferStatusInquiry =
 
 
 /**
- * @param {!proto.snap.TransferStatusInquiryRequest} request The
+ * @param {!proto.payment.TransferStatusInquiryRequest} request The
  *     request proto
  * @param {?Object<string, string>=} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.snap.TransferStatusInquiryResponse>}
+ * @return {!Promise<!proto.payment.TransferStatusInquiryResponse>}
  *     Promise that resolves to the response
  */
-proto.snap.SnapServicePromiseClient.prototype.transferStatusInquiry =
+proto.payment.SnapServicePromiseClient.prototype.transferStatusInquiry =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/snap.SnapService/TransferStatusInquiry',
+      '/payment.SnapService/TransferStatusInquiry',
       request,
       metadata || {},
       methodDescriptor_SnapService_TransferStatusInquiry);
 };
 
 
-module.exports = proto.snap;
+module.exports = proto.payment;
 
