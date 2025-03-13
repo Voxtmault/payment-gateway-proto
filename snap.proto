@@ -101,6 +101,7 @@ message BankTransferResponse { // Used for Inter and Intra Bank Transfer
     string jsonStr = 6; // JSON representation of the response
     string transactionStatusCode = 7;
     string transactionStatusDesc = 8;
+    int32 transactionStatusCodeInternal = 9;
 }
 
 message ExternalAccountInquiryRequest {

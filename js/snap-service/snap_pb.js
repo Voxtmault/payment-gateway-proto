@@ -3489,7 +3489,8 @@ proto.payment.BankTransferResponse.toObject = function(includeInstance, msg) {
     transactiondate: jspb.Message.getFieldWithDefault(msg, 5, ""),
     jsonstr: jspb.Message.getFieldWithDefault(msg, 6, ""),
     transactionstatuscode: jspb.Message.getFieldWithDefault(msg, 7, ""),
-    transactionstatusdesc: jspb.Message.getFieldWithDefault(msg, 8, "")
+    transactionstatusdesc: jspb.Message.getFieldWithDefault(msg, 8, ""),
+    transactionstatuscodeinternal: jspb.Message.getFieldWithDefault(msg, 9, 0)
   };
 
   if (includeInstance) {
@@ -3558,6 +3559,10 @@ proto.payment.BankTransferResponse.deserializeBinaryFromReader = function(msg, r
     case 8:
       var value = /** @type {string} */ (reader.readString());
       msg.setTransactionstatusdesc(value);
+      break;
+    case 9:
+      var value = /** @type {number} */ (reader.readInt32());
+      msg.setTransactionstatuscodeinternal(value);
       break;
     default:
       reader.skipField();
@@ -3642,6 +3647,13 @@ proto.payment.BankTransferResponse.serializeBinaryToWriter = function(message, w
   if (f.length > 0) {
     writer.writeString(
       8,
+      f
+    );
+  }
+  f = message.getTransactionstatuscodeinternal();
+  if (f !== 0) {
+    writer.writeInt32(
+      9,
       f
     );
   }
@@ -3808,6 +3820,24 @@ proto.payment.BankTransferResponse.prototype.getTransactionstatusdesc = function
  */
 proto.payment.BankTransferResponse.prototype.setTransactionstatusdesc = function(value) {
   return jspb.Message.setProto3StringField(this, 8, value);
+};
+
+
+/**
+ * optional int32 transactionStatusCodeInternal = 9;
+ * @return {number}
+ */
+proto.payment.BankTransferResponse.prototype.getTransactionstatuscodeinternal = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 9, 0));
+};
+
+
+/**
+ * @param {number} value
+ * @return {!proto.payment.BankTransferResponse} returns this
+ */
+proto.payment.BankTransferResponse.prototype.setTransactionstatuscodeinternal = function(value) {
+  return jspb.Message.setProto3IntField(this, 9, value);
 };
 
 
