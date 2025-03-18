@@ -1,0 +1,53 @@
+syntax = "proto3";
+
+option go_package = "./";
+
+package payment;
+
+import "snap.proto";
+
+service ManagementService {
+    rpc GetAvailablePaymentMethods(Empty) returns (GetAvailablePaymentMethodsResponse);
+    rpc GetAvailableExternalBanks(Empty) returns (GetAvailableExternalBanksResponse);
+    rpc GetBankSwiftCode(GetBankSwiftCodeRequest) returns (GetBankSwiftCodeResponse);
+}
+
+message GetAvailablePaymentMethodsResponse {
+    RPCResponse response = 1;
+    repeated AvailablePaymentMethod availablePaymentMethods = 2;
+    string jsonStr = 3; // JSON representation of the response
+}
+
+message AvailablePaymentMethod {
+    AvailablePaymentMethodBank bank = 1;
+    string picturePath = 2;
+    repeated PaymentMethods paymentMethods = 3;
+}
+message AvailablePaymentMethodBank {
+    int32 id = 1;
+    string name = 2;
+    string swiftCode = 3;
+}
+message PaymentMethods {
+    int32 id = 1;
+    SnapHelper paymentMethod = 2;
+}
+
+message GetAvailableExternalBanksResponse {
+    RPCResponse response = 1;
+    repeated AvailableExternalBank availableExternalBanks = 2;
+    string jsonStr = 3; // JSON representation of the response
+}
+message AvailableExternalBank {
+    string name = 1;
+    string swiftCode = 2;
+}
+
+message GetBankSwiftCodeRequest {
+    string bankName = 1;
+}
+message GetBankSwiftCodeResponse {
+    RPCResponse response = 1;
+    string bankName = 2;
+    string swiftCode = 3;
+}
