@@ -21,15 +21,33 @@ message GetVirtualAccountInfoRequest {
 message GetVirtualAccountInfoResponse {
     RPCResponse response = 1;
     VirtualAccountData vaData = 2;
+    string jsonStr = 3; // JSON representation of the response
 }
 
 // Model Definitions
 
 message VirtualAccountData {
-    string vaNum = 1;
-    string expireDate = 2;
-    string transactionIdentifier = 3;
-    Bank bankInfo = 4;
-    string vaAccountName = 5;
-    string totalAmount = 6;
+    SnapHelper appInfo = 1;
+    BankInfo bankInfo = 2;
+    string id = 3;
+    SnapHelper status = 4;
+    AppReference appReference = 5;
+    string expireDate = 6;
+    string virtualAccountNo = 7;
+    string virtualAccountName = 8;
+    BalanceAmount totalAmount = 9;
+    BalanceAmount feeAmount = 10;
+    BalanceAmount paidAmount = 11;
+    string createAt = 12;
+    string updateAt = 13;
+}
+
+message AppReference {
+    int64 trxId = 1;
+    string trxIdentifier = 2;
+}
+message BankInfo {
+    int64 id = 1;   
+    string name = 2;
+    string picturePath = 3;
 }
