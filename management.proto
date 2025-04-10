@@ -10,6 +10,7 @@ service ManagementService {
     rpc GetAvailablePaymentMethods(Empty) returns (GetAvailablePaymentMethodsResponse);
     rpc GetAvailableExternalBanks(Empty) returns (GetAvailableExternalBanksResponse);
     rpc GetBankSwiftCode(GetBankSwiftCodeRequest) returns (GetBankSwiftCodeResponse);
+    rpc GetPaymentMethodType(Empty) returns (GetPaymentMethodTypeResponse);
 }
 
 message GetAvailablePaymentMethodsResponse {
@@ -50,4 +51,9 @@ message GetBankSwiftCodeResponse {
     RPCResponse response = 1;
     string bankName = 2;
     string swiftCode = 3;
+}
+
+message GetPaymentMethodTypeResponse {
+    RPCResponse response = 1;
+    repeated SnapHelper data = 2;
 }

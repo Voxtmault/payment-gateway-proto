@@ -259,5 +259,66 @@ proto.payment.ManagementServicePromiseClient.prototype.getBankSwiftCode =
 };
 
 
+/**
+ * @const
+ * @type {!grpc.web.MethodDescriptor<
+ *   !proto.payment.Empty,
+ *   !proto.payment.GetPaymentMethodTypeResponse>}
+ */
+const methodDescriptor_ManagementService_GetPaymentMethodType = new grpc.web.MethodDescriptor(
+  '/payment.ManagementService/GetPaymentMethodType',
+  grpc.web.MethodType.UNARY,
+  snap_pb.Empty,
+  proto.payment.GetPaymentMethodTypeResponse,
+  /**
+   * @param {!proto.payment.Empty} request
+   * @return {!Uint8Array}
+   */
+  function(request) {
+    return request.serializeBinary();
+  },
+  proto.payment.GetPaymentMethodTypeResponse.deserializeBinary
+);
+
+
+/**
+ * @param {!proto.payment.Empty} request The
+ *     request proto
+ * @param {?Object<string, string>} metadata User defined
+ *     call metadata
+ * @param {function(?grpc.web.RpcError, ?proto.payment.GetPaymentMethodTypeResponse)}
+ *     callback The callback function(error, response)
+ * @return {!grpc.web.ClientReadableStream<!proto.payment.GetPaymentMethodTypeResponse>|undefined}
+ *     The XHR Node Readable Stream
+ */
+proto.payment.ManagementServiceClient.prototype.getPaymentMethodType =
+    function(request, metadata, callback) {
+  return this.client_.rpcCall(this.hostname_ +
+      '/payment.ManagementService/GetPaymentMethodType',
+      request,
+      metadata || {},
+      methodDescriptor_ManagementService_GetPaymentMethodType,
+      callback);
+};
+
+
+/**
+ * @param {!proto.payment.Empty} request The
+ *     request proto
+ * @param {?Object<string, string>=} metadata User defined
+ *     call metadata
+ * @return {!Promise<!proto.payment.GetPaymentMethodTypeResponse>}
+ *     Promise that resolves to the response
+ */
+proto.payment.ManagementServicePromiseClient.prototype.getPaymentMethodType =
+    function(request, metadata) {
+  return this.client_.unaryCall(this.hostname_ +
+      '/payment.ManagementService/GetPaymentMethodType',
+      request,
+      metadata || {},
+      methodDescriptor_ManagementService_GetPaymentMethodType);
+};
+
+
 module.exports = proto.payment;
 

@@ -25,6 +25,7 @@ type ManagementServiceClient interface {
 	GetAvailablePaymentMethods(ctx context.Context, in *Empty, opts ...grpc.CallOption) (*GetAvailablePaymentMethodsResponse, error)
 	GetAvailableExternalBanks(ctx context.Context, in *Empty, opts ...grpc.CallOption) (*GetAvailableExternalBanksResponse, error)
 	GetBankSwiftCode(ctx context.Context, in *GetBankSwiftCodeRequest, opts ...grpc.CallOption) (*GetBankSwiftCodeResponse, error)
+	GetPaymentMethodType(ctx context.Context, in *Empty, opts ...grpc.CallOption) (*GetPaymentMethodTypeResponse, error)
 }
 
 type managementServiceClient struct {
@@ -62,6 +63,15 @@ func (c *managementServiceClient) GetBankSwiftCode(ctx context.Context, in *GetB
 	return out, nil
 }
 
+func (c *managementServiceClient) GetPaymentMethodType(ctx context.Context, in *Empty, opts ...grpc.CallOption) (*GetPaymentMethodTypeResponse, error) {
+	out := new(GetPaymentMethodTypeResponse)
+	err := c.cc.Invoke(ctx, "/payment.ManagementService/GetPaymentMethodType", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // ManagementServiceServer is the server API for ManagementService service.
 // All implementations must embed UnimplementedManagementServiceServer
 // for forward compatibility
@@ -69,6 +79,7 @@ type ManagementServiceServer interface {
 	GetAvailablePaymentMethods(context.Context, *Empty) (*GetAvailablePaymentMethodsResponse, error)
 	GetAvailableExternalBanks(context.Context, *Empty) (*GetAvailableExternalBanksResponse, error)
 	GetBankSwiftCode(context.Context, *GetBankSwiftCodeRequest) (*GetBankSwiftCodeResponse, error)
+	GetPaymentMethodType(context.Context, *Empty) (*GetPaymentMethodTypeResponse, error)
 	mustEmbedUnimplementedManagementServiceServer()
 }
 
@@ -84,6 +95,9 @@ func (UnimplementedManagementServiceServer) GetAvailableExternalBanks(context.Co
 }
 func (UnimplementedManagementServiceServer) GetBankSwiftCode(context.Context, *GetBankSwiftCodeRequest) (*GetBankSwiftCodeResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetBankSwiftCode not implemented")
+}
+func (UnimplementedManagementServiceServer) GetPaymentMethodType(context.Context, *Empty) (*GetPaymentMethodTypeResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetPaymentMethodType not implemented")
 }
 func (UnimplementedManagementServiceServer) mustEmbedUnimplementedManagementServiceServer() {}
 
@@ -152,6 +166,24 @@ func _ManagementService_GetBankSwiftCode_Handler(srv interface{}, ctx context.Co
 	return interceptor(ctx, in, info, handler)
 }
 
+func _ManagementService_GetPaymentMethodType_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(Empty)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ManagementServiceServer).GetPaymentMethodType(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/payment.ManagementService/GetPaymentMethodType",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ManagementServiceServer).GetPaymentMethodType(ctx, req.(*Empty))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // ManagementService_ServiceDesc is the grpc.ServiceDesc for ManagementService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -170,6 +202,10 @@ var ManagementService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "GetBankSwiftCode",
 			Handler:    _ManagementService_GetBankSwiftCode_Handler,
+		},
+		{
+			MethodName: "GetPaymentMethodType",
+			Handler:    _ManagementService_GetPaymentMethodType_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
