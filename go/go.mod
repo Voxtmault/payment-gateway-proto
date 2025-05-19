@@ -1,4 +1,4 @@
-module github.com/voxtmault/payment-gateway-proto/go
+module github.com/voxtmault/payment-gateway-proto
 
 go 1.24.3
 
