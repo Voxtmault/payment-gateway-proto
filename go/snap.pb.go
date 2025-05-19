@@ -2217,6 +2217,43 @@ func (x *QRIS) GetQrImage() string {
 	return ""
 }
 
+// To Trigger Pull on other services
+type EmptyV2 struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *EmptyV2) Reset() {
+	*x = EmptyV2{}
+	mi := &file_snap_proto_msgTypes[31]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *EmptyV2) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*EmptyV2) ProtoMessage() {}
+
+func (x *EmptyV2) ProtoReflect() protoreflect.Message {
+	mi := &file_snap_proto_msgTypes[31]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use EmptyV2.ProtoReflect.Descriptor instead.
+func (*EmptyV2) Descriptor() ([]byte, []int) {
+	return file_snap_proto_rawDescGZIP(), []int{31}
+}
+
 var File_snap_proto protoreflect.FileDescriptor
 
 const file_snap_proto_rawDesc = "" +
@@ -2408,7 +2445,8 @@ const file_snap_proto_rawDesc = "" +
 	"\x04QRIS\x12\x1c\n" +
 	"\tqrContent\x18\x01 \x01(\tR\tqrContent\x12\x14\n" +
 	"\x05qrURL\x18\x02 \x01(\tR\x05qrURL\x12\x18\n" +
-	"\aqrImage\x18\x03 \x01(\tR\aqrImage2\xfc\a\n" +
+	"\aqrImage\x18\x03 \x01(\tR\aqrImage\"\t\n" +
+	"\aEmptyV22\xfc\a\n" +
 	"\vSnapService\x12Z\n" +
 	"\x11AddVirtualAccount\x12!.payment.AddVirtualAccountRequest\x1a\".payment.AddVirtualAccountResponse\x12A\n" +
 	"\x0eBalanceInquiry\x12\x0e.payment.Empty\x1a\x1f.payment.BalanceInquiryResponse\x12N\n" +
@@ -2434,7 +2472,7 @@ func file_snap_proto_rawDescGZIP() []byte {
 	return file_snap_proto_rawDescData
 }
 
-var file_snap_proto_msgTypes = make([]protoimpl.MessageInfo, 31)
+var file_snap_proto_msgTypes = make([]protoimpl.MessageInfo, 32)
 var file_snap_proto_goTypes = []any{
 	(*RPCResponse)(nil),                         // 0: payment.RPCResponse
 	(*Empty)(nil),                               // 1: payment.Empty
@@ -2467,6 +2505,7 @@ var file_snap_proto_goTypes = []any{
 	(*SnapHelper)(nil),                          // 28: payment.SnapHelper
 	(*Bank)(nil),                                // 29: payment.Bank
 	(*QRIS)(nil),                                // 30: payment.QRIS
+	(*EmptyV2)(nil),                             // 31: payment.EmptyV2
 }
 var file_snap_proto_depIdxs = []int32{
 	0,  // 0: payment.AddVirtualAccountResponse.response:type_name -> payment.RPCResponse
@@ -2544,7 +2583,7 @@ func file_snap_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_snap_proto_rawDesc), len(file_snap_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   31,
+			NumMessages:   32,
 			NumExtensions: 0,
 			NumServices:   1,
 		},

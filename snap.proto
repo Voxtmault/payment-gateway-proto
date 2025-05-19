@@ -236,3 +236,8 @@ message QRIS {
     string qrURL = 2;
     string qrImage = 3;
 }
+
+// To Trigger Pull on other services
+message EmptyV2 {
+
+}
