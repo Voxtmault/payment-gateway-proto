@@ -123,7 +123,7 @@ if (goog.DEBUG && !COMPILED) {
  * @constructor
  */
 proto.payment.AddVirtualAccountResponse = function(opt_data) {
-  jspb.Message.initialize(this, opt_data, 0, -1, null, null);
+  jspb.Message.initialize(this, opt_data, 0, -1, proto.payment.AddVirtualAccountResponse.repeatedFields_, null);
 };
 goog.inherits(proto.payment.AddVirtualAccountResponse, jspb.Message);
 if (goog.DEBUG && !COMPILED) {
@@ -1239,6 +1239,13 @@ proto.payment.AddVirtualAccountRequest.prototype.setExpiredate = function(value)
 
 
 
+/**
+ * List of repeated fields within this message type.
+ * @private {!Array<number>}
+ * @const
+ */
+proto.payment.AddVirtualAccountResponse.repeatedFields_ = [8];
+
 
 
 if (jspb.Message.GENERATE_TO_OBJECT) {
@@ -1276,7 +1283,9 @@ proto.payment.AddVirtualAccountResponse.toObject = function(includeInstance, msg
     transactionidentifier: jspb.Message.getFieldWithDefault(msg, 4, ""),
     bankinfo: (f = msg.getBankinfo()) && proto.payment.Bank.toObject(includeInstance, f),
     vaaccountname: jspb.Message.getFieldWithDefault(msg, 6, ""),
-    totalamount: jspb.Message.getFieldWithDefault(msg, 7, "")
+    totalamount: jspb.Message.getFieldWithDefault(msg, 7, ""),
+    sampleList: jspb.Message.toObjectList(msg.getSampleList(),
+    proto.payment.RPCResponse.toObject, includeInstance)
   };
 
   if (includeInstance) {
@@ -1342,6 +1351,11 @@ proto.payment.AddVirtualAccountResponse.deserializeBinaryFromReader = function(m
     case 7:
       var value = /** @type {string} */ (reader.readString());
       msg.setTotalamount(value);
+      break;
+    case 8:
+      var value = new proto.payment.RPCResponse;
+      reader.readMessage(value,proto.payment.RPCResponse.deserializeBinaryFromReader);
+      msg.addSample(value);
       break;
     default:
       reader.skipField();
@@ -1421,6 +1435,14 @@ proto.payment.AddVirtualAccountResponse.serializeBinaryToWriter = function(messa
     writer.writeString(
       7,
       f
+    );
+  }
+  f = message.getSampleList();
+  if (f.length > 0) {
+    writer.writeRepeatedMessage(
+      8,
+      f,
+      proto.payment.RPCResponse.serializeBinaryToWriter
     );
   }
 };
@@ -1587,6 +1609,44 @@ proto.payment.AddVirtualAccountResponse.prototype.getTotalamount = function() {
  */
 proto.payment.AddVirtualAccountResponse.prototype.setTotalamount = function(value) {
   return jspb.Message.setProto3StringField(this, 7, value);
+};
+
+
+/**
+ * repeated RPCResponse sample = 8;
+ * @return {!Array<!proto.payment.RPCResponse>}
+ */
+proto.payment.AddVirtualAccountResponse.prototype.getSampleList = function() {
+  return /** @type{!Array<!proto.payment.RPCResponse>} */ (
+    jspb.Message.getRepeatedWrapperField(this, proto.payment.RPCResponse, 8));
+};
+
+
+/**
+ * @param {!Array<!proto.payment.RPCResponse>} value
+ * @return {!proto.payment.AddVirtualAccountResponse} returns this
+*/
+proto.payment.AddVirtualAccountResponse.prototype.setSampleList = function(value) {
+  return jspb.Message.setRepeatedWrapperField(this, 8, value);
+};
+
+
+/**
+ * @param {!proto.payment.RPCResponse=} opt_value
+ * @param {number=} opt_index
+ * @return {!proto.payment.RPCResponse}
+ */
+proto.payment.AddVirtualAccountResponse.prototype.addSample = function(opt_value, opt_index) {
+  return jspb.Message.addToRepeatedWrapperField(this, 8, opt_value, proto.payment.RPCResponse, opt_index);
+};
+
+
+/**
+ * Clears the list making it empty but non-null.
+ * @return {!proto.payment.AddVirtualAccountResponse} returns this
+ */
+proto.payment.AddVirtualAccountResponse.prototype.clearSampleList = function() {
+  return this.setSampleList([]);
 };
 
 

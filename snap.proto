@@ -16,6 +16,7 @@ service SnapService {
     rpc InternalAccountInquiry(InternalAccountInquiryRequest) returns (InternalAccountInquiryResponse);
     rpc VirtualAccountStatusInquiry(VirtualAccountStatusInquiryRequest) returns (VirtualAccountStatusInquiryResponse);
     rpc TransferStatusInquiry(TransferStatusInquiryRequest) returns (TransferStatusInquiryResponse);
+    rpc GenerateQRIS(GenerateQRISRequest) returns (GenerateQRISResponse);
 }
 
 message RPCResponse {
@@ -42,6 +43,7 @@ message AddVirtualAccountResponse {
     Bank bankInfo = 5;
     string vaAccountName = 6;
     string totalAmount = 7;
+    repeated RPCResponse sample = 8;
 }
 
 message BalanceInquiryResponse {
@@ -159,6 +161,23 @@ message TransferStatusInquiryResponse {
     string jsonStr = 12; // JSON representation of the response
 }
 
+message GenerateQRISRequest {
+    int64 idApp = 1;
+    string appReferenceNo = 2; // uuidv4
+    BalanceAmount amount = 3;
+}
+message GenerateQRISResponse {
+    RPCResponse response = 1;
+    string bankReferenceNo = 2;
+    string pgReferenceNo = 3;
+    string appReferenceNo = 4;
+    QRIS qris = 5;
+    string merchantName = 6;
+    string storeId = 7;
+    string terminalId = 8;
+    string jsonStr = 12;
+}
+
 // Model Definitions
 
 message BalanceAmount {
@@ -210,4 +229,10 @@ message Bank {
     SnapHelper helper = 1;
     string picturePath = 2;
     string swiftCode = 3;
+}
+
+message QRIS {
+    string qrContent = 1;
+    string qrURL = 2;
+    string qrImage = 3;
 }
